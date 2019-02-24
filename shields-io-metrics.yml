@@ -81,6 +81,10 @@
         # currently (2019-02-01) we use an organization with id = 2 and name = Shields.io)
         org_name: Shields.io
         org_role: Viewer
+  tasks:
+  - name: Install worldPing plugin
+    grafana_plugin:
+      name: raintank-worldping-app
   tags:
     - grafana
 - name: Setup nginx
