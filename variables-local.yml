@@ -1,0 +1,7 @@
+ansible_python_interpreter: /usr/bin/python3
+metrics_domain: localhost
+metrics_port: 8081
+mertics_grafana_admin_password: admin
+metrics_grafana_github_client_id: 1
+metrics_grafana_github_client_secret: 2
+mertics_prometheus_password: prometheus

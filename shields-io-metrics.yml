@@ -1,0 +1,149 @@
+---
+- name: Setup prometheus
+  hosts: metrics
+  roles:
+    - cloudalchemy.prometheus
+  vars:
+    # TODO check final grafana config https://github.com/cloudalchemy/ansible-grafana
+    prometheus_version: 2.3.2
+    # override extra labels added by cloudalchemy.prometheus role
+    prometheus_external_labels: {}
+    # TODO
+    prometheus_web_external_url: http://metrics-test.shields.platan.space/prometheus/
+    prometheus_web_listen_address: 127.0.0.1:9090
+    prometheus_config_flags_extra:
+      web.route-prefix: /
+    prometheus_global:
+      scrape_interval: 15s
+    prometheus_scrape_configs:
+    - job_name: 'prometheus'
+      static_configs:
+      - targets: ['localhost:9090']
+    - job_name: 'shields-metrics1'
+      scheme: https
+      static_configs:
+        - targets: ['shields-metrics1.now.sh', 'shields-metrics2.now.sh']
+          labels:
+            service: shields
+            env: test-platan
+    - job_name: 'shields-io-production'
+      scheme: https
+      static_configs:
+        - targets: ['s0.shields-server.com', 's1.shields-server.com', 's2.shields-server.com']
+          labels:
+            service: shields
+            env: shields-io-production
+      tls_config:
+        insecure_skip_verify: true
+  tags:
+    - prometheus
+- name: Setup grafana
+  hosts: metrics
+  roles:
+    - cloudalchemy.grafana
+  vars:
+    grafana_version: 5.4.3
+    grafana_security:
+      admin_user: admin
+      admin_password: "{{mertics_grafana_admin_password}}"
+    grafana_url: "https://{{ metrics_domain }}"
+    grafana_datasources:
+      - name: Prometheus-default
+        type: prometheus
+        access: proxy
+        url: 'http://localhost:9090/'
+        basicAuth: false
+        isDefault: true
+        # TODO: (2019-02-01) we use an organization with id = 2 and name = Shields.io)
+        orgId: 1
+        editable: true
+    grafana_dashboards_dir: grafana/dashboards
+    grafana_users:
+      # currently (2019-02-01) we use an organization with id = 2)
+      auto_assign_org_id: 1
+      auto_assign_org_role: Editor
+    grafana_auth:
+      github:
+        enabled: true
+        allow_sign_up: true
+        client_id: "{{ metrics_grafana_github_client_id }}"
+        client_secret: "{{ metrics_grafana_github_client_secret }}"
+        scopes: 'user:email,read:org'
+        auth_url: https://github.com/login/oauth/authorize
+        token_url: https://github.com/login/oauth/access_token
+        api_url: https://api.github.com/user
+        # 3047484 is an id of the https://github.com/orgs/badges/teams/shields-core team
+        # How to get an id?
+        # curl https://api.github.com/orgs/badges/teams -H "Authorization: token XXX" -s | jq '.[] | select(.name=="shields-core").id'
+        team_ids: 3047484
+      anonymous:
+        enabled: true
+        # currently (2019-02-01) we use an organization with id = 2 and name = Shields.io)
+        org_name: Shields.io
+        org_role: Viewer
+  tags:
+    - grafana
+- name: Setup nginx
+  hosts: metrics
+  roles:
+    - role: nginxinc.nginx
+      tags: [nginx-role]
+  vars:
+    nginx_http_template_enable: true
+    nginx_http_template:
+     default:
+        template_file: http/default.conf.j2
+        conf_file_name: default.conf
+        conf_file_location: /etc/nginx/conf.d/
+        port: "{{ metrics_port }}"
+        server_name: "{{ mertics_domains }}"
+        reverse_proxy:
+          locations:
+            grafana:
+              location: /
+              proxy_pass: http://localhost:3000/
+            prometheus:
+              location: /prometheus/
+              proxy_pass: http://localhost:9090/
+              auth_basic: "Restricted Content"
+              # this role creates 'nginx' user and installs nginx
+              # this htpasswd file will be created in the next task, because it have to be owned by 'nginx' user
+              auth_basic_file: /etc/nginx/.htpasswd.{{ metrics_domain }}-prometheus
+  tags:
+    - nginx
+  tasks:
+  - name: Install package required by htpasswd
+    apt:
+      name: python3-passlib
+    tags:
+      - nginx-htpasswd
+  - name: Create a password file for nginx
+    htpasswd:
+      path: /etc/nginx/.htpasswd.{{ metrics_domain }}-prometheus
+      name: prometheus
+      password: '{{ mertics_prometheus_password }}'
+      owner: nginx
+      group: root
+      mode: 0640
+    tags:
+      - nginx-htpasswd
+- name: Install Let's Encrypt certificate and enable HTTPS in nginx
+  hosts: metrics
+  tasks:
+  - name: Add certbot repository
+    apt_repository:
+      repo: ppa:certbot/certbot
+    tags:
+      - certbot-package
+  - name: Install python-certbot-nginx package
+  # Last known working version of python-certbot-nginx: 0.28.0-1+ubuntu18.04.1+certbot+3
+    apt:
+      name: python-certbot-nginx
+    tags: certbot-package
+  - name: Obtain a certificate
+    shell: certbot certonly -d {{ metrics_domain }} --agree-tos -m {{ metrics_certbot_email }} --nginx --keep-until-expiring
+    tags: certbot-obtain
+  - name: Add the certificate to nginx configuration
+    shell: certbot install --nginx --cert-name {{ metrics_domain }} --redirect -n
+    tags: certbot-nginx
+  tags: certbot

@@ -1,0 +1,11 @@
+- name: cloudalchemy.prometheus
+  version: 2.5.0
+# waiting for the next version of nginxinc.nginx after version 0.11.0,
+# which should contain https://github.com/nginxinc/ansible-role-nginx/commit/80f61576923bb9950c2c738fd67f095b86b12847
+# - name: nginxinc.nginx
+#   version: 0.12.0
+- name: nginxinc.nginx
+  src: https://github.com/nginxinc/ansible-role-nginx.git
+  version: 589d668deff837a033166fab7d8e3a5355a5891f
+- name: cloudalchemy.grafana
+  version: 0.13.0

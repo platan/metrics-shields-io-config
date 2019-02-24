@@ -1,0 +1,7 @@
+metrics_domain: metrics.shields.io
+mertics_domains: "{{metrics_domain}}"
+metrics_port: 80
+mertics_grafana_admin_password: "{{vault_mertics_grafana_admin_password}}"
+metrics_grafana_github_client_id: 2be9d5b524d2a1b5e0e7
+metrics_grafana_github_client_secret: "{{vault_metrics_grafana_github_client_secret}}"
+mertics_prometheus_password: "{{vault_mertics_prometheus_password}}"
