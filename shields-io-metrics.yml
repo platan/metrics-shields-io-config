@@ -85,6 +85,9 @@
   - name: Install worldPing plugin
     grafana_plugin:
       name: raintank-worldping-app
+  - name: Install Pie Chart plugin
+    grafana_plugin:
+      name: grafana-piechart-panel
   tags:
     - grafana
 - name: Setup nginx
