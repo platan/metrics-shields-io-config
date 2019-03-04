@@ -8,4 +8,6 @@
   src: https://github.com/nginxinc/ansible-role-nginx.git
   version: 589d668deff837a033166fab7d8e3a5355a5891f
 - name: cloudalchemy.grafana
-  version: 0.13.0
+  src: https://github.com/cloudalchemy/ansible-grafana.git
+  # 77d0840f023dde702ec971b0ac8d7b6d194f7d96 is a commit from https://github.com/cloudalchemy/ansible-grafana/pull/134
+  version: 77d0840f023dde702ec971b0ac8d7b6d194f7d96
