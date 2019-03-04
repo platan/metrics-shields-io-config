@@ -82,6 +82,7 @@
         org_name: Shields.io
         org_role: Viewer
   tasks:
+  # TODO: requires restart
   - name: Install worldPing plugin
     grafana_plugin:
       name: raintank-worldping-app
