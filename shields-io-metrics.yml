@@ -82,13 +82,21 @@
         org_name: Shields.io
         org_role: Viewer
   tasks:
-  # TODO: requires restart
   - name: Install worldPing plugin
     grafana_plugin:
       name: raintank-worldping-app
+    notify:
+    - restart grafana
   - name: Install Pie Chart plugin
     grafana_plugin:
       name: grafana-piechart-panel
+    notify:
+    - restart grafana
+  handlers:
+    - name: restart grafana
+      service:
+        name: grafana-server
+        state: restarted
   tags:
     - grafana
 - name: Setup nginx
