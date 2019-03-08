@@ -83,11 +83,13 @@
         org_role: Viewer
   tasks:
   - name: Install worldPing plugin
+    become: yes
     grafana_plugin:
       name: raintank-worldping-app
     notify:
     - restart grafana
   - name: Install Pie Chart plugin
+    become: yes
     grafana_plugin:
       name: grafana-piechart-panel
     notify:
@@ -101,6 +103,7 @@
     - grafana
 - name: Setup nginx
   hosts: metrics
+  become: true
   roles:
     - role: nginxinc.nginx
       tags: [nginx-role]
@@ -161,9 +164,11 @@
       name: python-certbot-nginx
     tags: certbot-package
   - name: Obtain a certificate
+    become: yes
     shell: certbot certonly -d {{ metrics_domain }} --agree-tos -m {{ metrics_certbot_email }} --nginx --keep-until-expiring
     tags: certbot-obtain
   - name: Add the certificate to nginx configuration
+    become: yes
     shell: certbot install --nginx --cert-name {{ metrics_domain }} --redirect -n
     tags: certbot-nginx
   tags: certbot
