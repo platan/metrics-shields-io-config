@@ -29,7 +29,7 @@ metrics_certbot_email: metrics@example.com
 ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml
 ```
 
-### Tesing
+### Testing
 
 Vagrant can be used to test the configuration ([documentation](https://docs.ansible.com/ansible/latest/scenario_guides/guide_vagrant.html)).
 1. Start a virtual server and run the playbook:
