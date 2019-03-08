@@ -5,16 +5,16 @@ This [Ansible](https://www.ansible.com/) [playbook](https://docs.ansible.com/ans
 ### How to use it?
 
 1. Install Ansible ([doc](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html))
-1. Prepare an inventory file `inventory.ini`:
+2. Prepare an inventory file `inventory.ini`:
 ```ini
 metrics ansible_host=metrics.example.com ansible_port=22 ansible_user=ubuntu ansible_sudo_pass=... ansible_python_interpreter=/usr/bin/python3
 ```
-1. Copy a SSH key to remote server
-1. Install required Ansible roles:
+3. Copy a SSH key to remote server
+4. Install required Ansible roles:
 ```bash
 ansible-galaxy install -r requirements.yml
 ```
-1. Define properties in `variables.yml`:
+5. Define properties in `variables.yml`:
 ```yml
 metrics_domain: metrics.example.com
 metrics_port: 80
@@ -24,7 +24,7 @@ metrics_grafana_github_client_secret: github_secret_id
 mertics_prometheus_password: prometheus_password
 metrics_certbot_email: metrics@example.com
 ```
-1. Run a playbook:
+6. Run a playbook:
 ```bash
 ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml
 ```
