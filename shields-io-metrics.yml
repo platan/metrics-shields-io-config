@@ -117,10 +117,14 @@
           locations:
             grafana:
               location: /
+              proxy_connect_timeout: 300
               proxy_pass: http://localhost:3000/
+              proxy_read_timeout: 300
             prometheus:
               location: /prometheus/
+              proxy_connect_timeout: 300
               proxy_pass: http://localhost:9090/
+              proxy_read_timeout: 300
               auth_basic: "Restricted Content"
               # this role creates 'nginx' user and installs nginx
               # this htpasswd file will be created in the next task, because it have to be owned by 'nginx' user
