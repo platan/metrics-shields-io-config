@@ -7,7 +7,7 @@ This [Ansible](https://www.ansible.com/) [playbook](https://docs.ansible.com/ans
 1. Install Ansible ([doc](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html))
 2. Prepare an inventory file `inventory.ini`:
 ```ini
-metrics ansible_host=metrics.example.com ansible_port=22 ansible_user=ubuntu ansible_sudo_pass=... ansible_python_interpreter=/usr/bin/python3
+metrics ansible_host=metrics.example.com ansible_port=22 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
 ```
 3. Copy a SSH key to remote server
 4. Install required Ansible roles:
@@ -26,7 +26,7 @@ metrics_certbot_email: metrics@example.com
 ```
 6. Run a playbook:
 ```bash
-ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml
+ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-become-pass
 ```
 
 ### Testing
