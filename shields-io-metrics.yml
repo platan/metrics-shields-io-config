@@ -159,6 +159,7 @@
     tags:
       - certbot-package
   - name: Install python-certbot-nginx package
+    become: yes
   # Last known working version of python-certbot-nginx: 0.28.0-1+ubuntu18.04.1+certbot+3
     apt:
       name: python-certbot-nginx
