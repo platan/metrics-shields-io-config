@@ -54,12 +54,10 @@
         url: 'http://localhost:9090/'
         basicAuth: false
         isDefault: true
-        # TODO: (2019-02-01) we use an organization with id = 2 and name = Shields.io)
         orgId: 1
         editable: true
     grafana_dashboards_dir: grafana/dashboards
     grafana_users:
-      # currently (2019-02-01) we use an organization with id = 2)
       auto_assign_org_id: 1
       auto_assign_org_role: Editor
     grafana_auth:
@@ -78,8 +76,7 @@
         team_ids: 3047484
       anonymous:
         enabled: true
-        # currently (2019-02-01) we use an organization with id = 2 and name = Shields.io)
-        org_name: Shields.io
+        org_name: Main Org.
         org_role: Viewer
   tasks:
   - name: Install worldPing plugin
