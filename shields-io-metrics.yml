@@ -4,7 +4,6 @@
   roles:
     - cloudalchemy.prometheus
   vars:
-    # TODO check final grafana config https://github.com/cloudalchemy/ansible-grafana
     prometheus_version: 2.3.2
     # override extra labels added by cloudalchemy.prometheus role
     prometheus_external_labels: {}
