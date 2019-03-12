@@ -18,15 +18,25 @@ ansible-galaxy install -r requirements.yml
 ```yml
 metrics_domain: metrics.example.com
 metrics_port: 80
-mertics_grafana_admin_password: grafana_password
+mertics_grafana_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          ...
 metrics_grafana_github_client_id: github_client_id
-metrics_grafana_github_client_secret: github_secret_id
-mertics_prometheus_password: prometheus_password
+metrics_grafana_github_client_secret: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          ...
+mertics_prometheus_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          ...
 metrics_certbot_email: metrics@example.com
+```
+You can encrypt passwords/cesrects using [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
+```bash
+ansible-vault encrypt_string password123 --ask-vault-pass
 ```
 6. Run a playbook:
 ```bash
-ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-become-pass
+ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass
 ```
 
 ### Testing
