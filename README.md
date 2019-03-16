@@ -39,9 +39,9 @@ ansible-vault encrypt_string password123 --ask-vault-pass
 ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass
 ```
 
-### Testing
+### Testing/running locally
 
-Vagrant can be used to test the configuration ([documentation](https://docs.ansible.com/ansible/latest/scenario_guides/guide_vagrant.html)).
+Vagrant can be used to test the configuration or run monitoring locally ([documentation](https://docs.ansible.com/ansible/latest/scenario_guides/guide_vagrant.html)).
 1. Start a virtual server and run the playbook:
 ```bash
 # go to repo directory
