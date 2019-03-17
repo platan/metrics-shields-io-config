@@ -23,7 +23,6 @@ ansible-galaxy install -r requirements.yml
 5. Define properties in `variables.yml`:
 ```yml
 metrics_domain: metrics.example.com
-metrics_port: 80
 mertics_grafana_admin_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           ...
