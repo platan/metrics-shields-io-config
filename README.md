@@ -4,7 +4,7 @@ This [Ansible](https://www.ansible.com/) [playbook](https://docs.ansible.com/ans
 
 Promethus configuration contains all [instances (servers)](https://github.com/badges/shields/blob/master/doc/production-hosting.md#badge-servers) of shields.io. 
 
-Grafana dashboards are defined in [`grafana/dashboards`](https://github.com/platan/metrics-shields-io-config/tree/master/grafana/dashboards) directory. __If you save changes made in dashboard in Grafana you shave to update these files ([explanation + instruction](http://docs.grafana.org/administration/provisioning/#making-changes-to-a-provisioned-dashboard)).__
+Grafana dashboards are defined in [`grafana/dashboards`](https://github.com/platan/metrics-shields-io-config/tree/master/grafana/dashboards) directory. __If you save changes made in dashboard in Grafana you have to update these files ([explanation + instruction](http://docs.grafana.org/administration/provisioning/#making-changes-to-a-provisioned-dashboard)).__
 
 <img src=".readme/grafana-nodejs-dashboard.png" width="40%" height="40%"> <img src=".readme/grafana-services-dashboard.png" width="40%" height="40%">
 
