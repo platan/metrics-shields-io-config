@@ -2,6 +2,10 @@
 
 This [Ansible](https://www.ansible.com/) [playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html) can be used to setup monitoring (https://metrics.shields.io) for [Shields.io](https://shields.io/). It installs [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/), [NGINX](https://www.nginx.com/) and [Let's Encrypt](https://letsencrypt.org/) certificates (using [Certbot](https://certbot.eff.org/)).
 
+Promethus configuration contains all [instances (servers)](https://github.com/badges/shields/blob/master/doc/production-hosting.md#badge-servers) of shields.io. 
+
+Grafana dashboards are defined in [`grafana/dashboards`](https://github.com/platan/metrics-shields-io-config/tree/master/grafana/dashboards) directory. __If you make changes in dashboard in Grafana you should update these files ([explanation + instruction](http://docs.grafana.org/administration/provisioning/#making-changes-to-a-provisioned-dashboard)).__
+
 ### How to use it?
 
 1. Install Ansible ([doc](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html))
