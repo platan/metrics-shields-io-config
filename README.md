@@ -6,6 +6,8 @@ Promethus configuration contains all [instances (servers)](https://github.com/ba
 
 __If you want to make changes in existing Grafana dashboards you have to update [these files](grafana/dashboards) ([explanation + instruction](http://docs.grafana.org/administration/provisioning/#making-changes-to-a-provisioned-dashboard)) and run this role.__ You can always save changes as a new dashboard: Dashboard settings > Save As ...
 
+worldPing has to be [enabled manually](https://grafana.com/plugins/raintank-worldping-app/installation). It also requires Grafana.com API Key. 
+
 <img src=".readme/grafana-nodejs-dashboard.png" width="40%" height="40%"> <img src=".readme/grafana-services-dashboard.png" width="40%" height="40%">
 
 ### How to use it?
