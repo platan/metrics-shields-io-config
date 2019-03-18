@@ -2,9 +2,9 @@
 
 This [Ansible](https://www.ansible.com/) [playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html) can be used to setup monitoring (https://metrics.shields.io) for [Shields.io](https://shields.io/). It installs [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/), [NGINX](https://www.nginx.com/) and [Let's Encrypt](https://letsencrypt.org/) certificates (using [Certbot](https://certbot.eff.org/)).
 
-Promethus configuration contains all [instances (servers)](https://github.com/badges/shields/blob/master/doc/production-hosting.md#badge-servers) of shields.io. 
+Promethus configuration contains all [instances (servers)](https://github.com/badges/shields/blob/master/doc/production-hosting.md#badge-servers) of shields.io. Grafana contains dashboards and [worldPing](https://grafana.com/plugins/raintank-worldping-app) plugin. 
 
-Grafana dashboards are defined in [`grafana/dashboards`](grafana/dashboards) directory. __If you want to save changes made in a dashboard in Grafana you have to update these files ([explanation + instruction](http://docs.grafana.org/administration/provisioning/#making-changes-to-a-provisioned-dashboard)).__ You can always save changes as a new dashboard: Dashboard settings > Save As ...
+__If you want to make changes in existing Grafana dashboards you have to update [these files](grafana/dashboards) ([explanation + instruction](http://docs.grafana.org/administration/provisioning/#making-changes-to-a-provisioned-dashboard)).__ You can always save changes as a new dashboard: Dashboard settings > Save As ...
 
 <img src=".readme/grafana-nodejs-dashboard.png" width="40%" height="40%"> <img src=".readme/grafana-services-dashboard.png" width="40%" height="40%">
 
