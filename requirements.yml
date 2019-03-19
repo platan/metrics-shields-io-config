@@ -2,11 +2,12 @@
   version: 2.5.0
 # waiting for the next version of nginxinc.nginx after version 0.11.0,
 # which should contain https://github.com/nginxinc/ansible-role-nginx/commit/80f61576923bb9950c2c738fd67f095b86b12847
+# and https://github.com/nginxinc/ansible-role-nginx/commit/a68ddd708d580a090c183ca7692b192554a64532
 # - name: nginxinc.nginx
 #   version: 0.12.0
 - name: nginxinc.nginx
   src: https://github.com/nginxinc/ansible-role-nginx.git
-  version: 589d668deff837a033166fab7d8e3a5355a5891f
+  version: a68ddd708d580a090c183ca7692b192554a64532
 - name: cloudalchemy.grafana
   src: https://github.com/cloudalchemy/ansible-grafana.git
   # 77d0840f023dde702ec971b0ac8d7b6d194f7d96 is a commit from https://github.com/cloudalchemy/ansible-grafana/pull/134
