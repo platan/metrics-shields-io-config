@@ -53,7 +53,7 @@ ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask
 https://metrics.shields.io/ uses one single-core virtual host with 2 GB RAM [VPS SSD 1](https://www.ovh.com/world/vps/vps-ssd.xml) with Ubuntu 18.04.
 
 #### GitHub authentication
-Grafana allows to authenticate with [GitHub](http://docs.grafana.org/auth/github/). At https://metrics.shields.io maintainers from core team can log into Grafana using GitHub with 'Editor' role. Currently [GitHub OAuth application](http://docs.grafana.org/auth/github/#configure-github-oauth-application) used for owned by [@platan](https://github.com/platan). 
+Grafana allows to authenticate with [GitHub](http://docs.grafana.org/auth/github/). At https://metrics.shields.io maintainers from core team can log into Grafana using GitHub with 'Editor' role. Currently [GitHub OAuth application](http://docs.grafana.org/auth/github/#configure-github-oauth-application) used for Grafana at metrics.shields.io is owned by [@platan](https://github.com/platan). 
 
 ### Testing/running locally
 
