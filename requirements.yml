@@ -10,5 +10,5 @@
   version: a68ddd708d580a090c183ca7692b192554a64532
 - name: cloudalchemy.grafana
   src: https://github.com/cloudalchemy/ansible-grafana.git
-  # 77d0840f023dde702ec971b0ac8d7b6d194f7d96 is a commit from https://github.com/cloudalchemy/ansible-grafana/pull/134
-  version: 77d0840f023dde702ec971b0ac8d7b6d194f7d96
+  # c9691b10710e5b1fde014aa0aae01ca5c9771a35 is a commit from https://github.com/cloudalchemy/ansible-grafana/pull/134
+  version: c9691b10710e5b1fde014aa0aae01ca5c9771a35
