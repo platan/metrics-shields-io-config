@@ -10,3 +10,5 @@
   version: a68ddd708d580a090c183ca7692b192554a64532
 - name: cloudalchemy.grafana
   version: 0.14.2
+- name: cloudalchemy.node-exporter
+  version: 0.12.1

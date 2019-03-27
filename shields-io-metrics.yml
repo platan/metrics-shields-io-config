@@ -1,4 +1,13 @@
 ---
+- name: Setup Node exporter
+  hosts: metrics
+  roles:
+    - cloudalchemy.node-exporter
+  vars:
+    node_exporter_web_listen_address: 127.0.0.1:9100
+  tags:
+    - prometheus
+    - node-exporter
 - name: Setup prometheus
   hosts: metrics
   roles:
@@ -17,6 +26,10 @@
     - job_name: 'prometheus'
       static_configs:
       - targets: ['localhost:9090']
+    - job_name: 'node'
+      static_configs:
+      - targets: ['localhost:9100']
+      scrape_interval: 60s
     - job_name: 'shields-io-production'
       scheme: https
       static_configs:
@@ -47,6 +60,10 @@
         isDefault: true
         orgId: 1
         editable: true
+    grafana_dashboards:
+    - dashboard_id: 1860
+      revision_id: 13
+      datasource: Prometheus-default
     grafana_dashboards_dir: grafana/dashboards
     grafana_users:
       auto_assign_org_id: 1
