@@ -159,6 +159,7 @@
   hosts: metrics
   tasks:
   - name: Add certbot repository
+    become: yes
     apt_repository:
       repo: ppa:certbot/certbot
     tags:
