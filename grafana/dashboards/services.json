@@ -124,7 +124,7 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "fill": 1,
@@ -145,7 +145,7 @@
         "total": false,
         "values": false
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -395,5 +395,5 @@
   "timezone": "",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 1
+  "version": 2
 }
