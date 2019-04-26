@@ -13,7 +13,7 @@
   roles:
     - cloudalchemy.prometheus
   vars:
-    prometheus_version: 2.4.3
+    prometheus_version: 2.5.0
     # override extra labels added by cloudalchemy.prometheus role
     prometheus_external_labels: {}
     prometheus_web_external_url: "http://{{ metrics_domain }}/prometheus/"
@@ -46,7 +46,7 @@
   roles:
     - cloudalchemy.grafana
   vars:
-    grafana_version: 6.1.3
+    grafana_version: 6.1.4
     grafana_security:
       admin_user: admin
       admin_password: "{{mertics_grafana_admin_password}}"
