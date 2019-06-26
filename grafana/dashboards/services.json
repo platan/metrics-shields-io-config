@@ -15,6 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
+  "iteration": 1561577645230,
   "links": [],
   "panels": [
     {
@@ -47,11 +48,12 @@
       "links": [],
       "maxDataPoints": 3,
       "nullPointMode": "connected",
+      "options": {},
       "pieType": "pie",
       "strokeWidth": "1",
       "targets": [
         {
-          "expr": "sum by(category)(increase(service_requests_total[$__range]))",
+          "expr": "sum by(category)(increase(service_requests_total{env=~\"$env\"}[$__range]))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -76,6 +78,7 @@
       },
       "id": 6,
       "links": [],
+      "options": {},
       "pageSize": null,
       "scroll": true,
       "showHeader": true,
@@ -108,7 +111,7 @@
       ],
       "targets": [
         {
-          "expr": "sum(increase(service_requests_total[$__range])) by (exported_service)",
+          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (exported_service)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -149,6 +152,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
@@ -160,7 +164,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(instance)(increase(service_requests_total[$__interval]))",
+          "expr": "sum by(instance)(increase(service_requests_total{env=~\"$env\"}[$__interval]))",
           "format": "time_series",
           "interval": "1d",
           "intervalFactor": 1,
@@ -220,6 +224,7 @@
       },
       "id": 7,
       "links": [],
+      "options": {},
       "pageSize": null,
       "scroll": true,
       "showHeader": true,
@@ -252,7 +257,7 @@
       ],
       "targets": [
         {
-          "expr": "sum(increase(service_requests_total[$__range])) by (family)",
+          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (family)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -294,6 +299,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
@@ -305,7 +311,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (instance)(rate(service_requests_total[1m]))",
+          "expr": "sum by (instance)(rate(service_requests_total{env=~\"$env\"}[1m]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -361,7 +367,36 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "shields-io-production",
+          "value": [
+            "shields-io-production"
+          ]
+        },
+        "datasource": "Prometheus-default",
+        "definition": "label_values({service=\"shields\"}, env)",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "env",
+        "options": [],
+        "query": "label_values({service=\"shields\"}, env)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-15m",
