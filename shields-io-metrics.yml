@@ -13,7 +13,7 @@
   roles:
     - cloudalchemy.prometheus
   vars:
-    prometheus_version: 2.9.2
+    prometheus_version: 2.10.0
     # override extra labels added by cloudalchemy.prometheus role
     prometheus_external_labels: {}
     prometheus_web_external_url: "http://{{ metrics_domain }}/prometheus/"
