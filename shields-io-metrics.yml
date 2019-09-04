@@ -91,12 +91,14 @@
     become: yes
     grafana_plugin:
       name: raintank-worldping-app
+      version: latest
     notify:
     - restart grafana
   - name: Install Pie Chart plugin
     become: yes
     grafana_plugin:
       name: grafana-piechart-panel
+      version: latest
     notify:
     - restart grafana
   handlers:
