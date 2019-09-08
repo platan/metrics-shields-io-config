@@ -15,57 +15,96 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1561577645230,
+  "iteration": 1567970657334,
   "links": [],
   "panels": [
     {
       "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "fontSize": "80%",
-      "format": "short",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 12,
         "x": 0,
         "y": 0
       },
-      "hideTimeOverride": false,
-      "id": 4,
-      "interval": null,
+      "id": 11,
       "legend": {
-        "percentage": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
         "show": true,
-        "sort": "total",
-        "sortDesc": true,
-        "values": true
+        "total": false,
+        "values": false
       },
-      "legendType": "Right side",
+      "lines": true,
+      "linewidth": 1,
       "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "options": {},
-      "pieType": "pie",
-      "strokeWidth": "1",
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(category)(increase(service_requests_total{env=~\"$env\"}[$__range]))",
+          "expr": "rate(service_response_millis_sum{env=~\"$env\"}[1m])/rate(service_response_millis_count{env=~\"$env\"}[1m])",
           "format": "time_series",
-          "instant": true,
-          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{category}}",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
-      "title": "Requests by category",
-      "type": "grafana-piechart-panel",
-      "valueName": "total"
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Service response time (milliseconds)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "columns": [],
@@ -127,91 +166,52 @@
     },
     {
       "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 1,
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "fontSize": "80%",
+      "format": "short",
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 8
       },
-      "id": 2,
+      "hideTimeOverride": false,
+      "id": 4,
+      "interval": null,
       "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "percentage": true,
         "show": true,
-        "total": false,
-        "values": false
+        "sort": "total",
+        "sortDesc": true,
+        "values": true
       },
-      "lines": false,
-      "linewidth": 1,
+      "legendType": "Right side",
       "links": [],
-      "nullPointMode": "null",
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
       "options": {},
-      "paceLength": 10,
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": true,
-      "steppedLine": false,
+      "pieType": "pie",
+      "strokeWidth": "1",
       "targets": [
         {
-          "expr": "sum by(instance)(increase(service_requests_total{env=~\"$env\"}[$__interval]))",
+          "expr": "sum by(category)(increase(service_requests_total{env=~\"$env\"}[$__range]))",
           "format": "time_series",
-          "interval": "1d",
+          "instant": true,
+          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{category}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Total requests per day per server",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "Requests by category",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
     },
     {
       "columns": [],
@@ -277,11 +277,103 @@
       "dashLength": 10,
       "dashes": false,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 17
+      },
+      "id": 2,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by(instance)(increase(service_requests_total{env=~\"$env\"}[$__interval]))",
+          "format": "time_series",
+          "interval": "1d",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total requests per day per server",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 26
       },
       "id": 9,
       "legend": {
@@ -299,7 +391,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
@@ -363,7 +457,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -371,7 +465,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "shields-io-production",
           "value": [
             "shields-io-production"
@@ -430,5 +523,5 @@
   "timezone": "",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 2
+  "version": 4
 }
