@@ -8,6 +8,21 @@
   tags:
     - prometheus
     - node-exporter
+- name: Setup Blackbox exporter
+  hosts: metrics
+  roles:
+    - cloudalchemy.blackbox-exporter
+  vars:
+    blackbox_exporter_web_listen_address: 127.0.0.1:9115
+    blackbox_exporter_configuration_modules:
+      http_2xx:
+        prober: http
+        timeout: 10s
+        http:
+          preferred_ip_protocol: "ip4"
+  tags:
+    - prometheus
+    - blackbox-exporter
 - name: Setup prometheus
   hosts: metrics
   roles:
@@ -39,6 +54,21 @@
             env: shields-io-production
       tls_config:
         insecure_skip_verify: true
+    - job_name: 'blackbox'
+      metrics_path: /probe
+      params:
+        module: [http_2xx]
+      static_configs:
+        - targets:
+          - https://raster.shields.io/badge/foo-bar-blue.png
+          - https://shields.io/
+      relabel_configs:
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          target_label: instance
+        - target_label: __address__
+          replacement: 127.0.0.1:9115
   tags:
     - prometheus
 - name: Setup grafana
