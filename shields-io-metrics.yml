@@ -94,6 +94,9 @@
     - dashboard_id: 1860
       revision_id: 13
       datasource: Prometheus-default
+    - dashboard_id: 7587
+      revision_id: 3
+      datasource: Prometheus-default
     grafana_dashboards_dir: grafana/dashboards
     grafana_users:
       auto_assign_org_id: 1
