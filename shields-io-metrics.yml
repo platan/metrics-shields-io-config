@@ -76,7 +76,7 @@
   roles:
     - cloudalchemy.grafana
   vars:
-    grafana_version: 6.3.5
+    grafana_version: 6.4.2
     grafana_security:
       admin_user: admin
       admin_password: "{{mertics_grafana_admin_password}}"
