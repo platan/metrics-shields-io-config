@@ -9,7 +9,7 @@
   src: https://github.com/nginxinc/ansible-role-nginx.git
   version: a68ddd708d580a090c183ca7692b192554a64532
 - name: cloudalchemy.grafana
-  version: 0.14.2
+  version: 0.15.0
 - name: cloudalchemy.node-exporter
   version: 0.14.0
 - name: cloudalchemy.blackbox-exporter
