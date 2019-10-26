@@ -1,13 +1,7 @@
 - name: cloudalchemy.prometheus
   version: 2.11.0
-# waiting for the next version of nginxinc.nginx after version 0.11.0,
-# which should contain https://github.com/nginxinc/ansible-role-nginx/commit/80f61576923bb9950c2c738fd67f095b86b12847
-# and https://github.com/nginxinc/ansible-role-nginx/commit/a68ddd708d580a090c183ca7692b192554a64532
-# - name: nginxinc.nginx
-#   version: 0.12.0
 - name: nginxinc.nginx
-  src: https://github.com/nginxinc/ansible-role-nginx.git
-  version: a68ddd708d580a090c183ca7692b192554a64532
+  version: 0.12.0
 - name: cloudalchemy.grafana
   version: 0.15.0
 - name: cloudalchemy.node-exporter
