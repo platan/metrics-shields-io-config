@@ -62,6 +62,11 @@
         - targets:
           - https://raster.shields.io/badge/foo-bar-blue.png
           - https://shields.io/
+          - https://img.shields.io/badge/foo-bar-blue
+          - https://img.shields.io/npm/v/gh-badges
+          - https://img.shields.io/travis/rust-lang/rust
+          - https://img.shields.io/npm/dt/gh-badges
+          - https://img.shields.io/github/stars/badges/shields
       relabel_configs:
         - source_labels: [__address__]
           target_label: __param_target
