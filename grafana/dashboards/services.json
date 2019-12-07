@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1567971477267,
+  "iteration": 1575725054624,
   "links": [],
   "panels": [
     {
@@ -23,6 +23,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -31,6 +32,7 @@
         "x": 0,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 11,
       "legend": {
         "avg": false,
@@ -108,6 +110,7 @@
     },
     {
       "columns": [],
+      "datasource": null,
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -172,6 +175,7 @@
         "label": "Others",
         "threshold": 0
       },
+      "datasource": null,
       "fontSize": "80%",
       "format": "short",
       "gridPos": {
@@ -215,6 +219,7 @@
     },
     {
       "columns": [],
+      "datasource": null,
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -276,6 +281,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -284,6 +290,7 @@
         "x": 0,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "alignAsTable": false,
@@ -364,9 +371,59 @@
     },
     {
       "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": ""
+      },
+      "datasource": null,
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 13,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 1,
+        "show": true,
+        "sideWidth": null,
+        "sort": "total",
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (exported_service)",
+          "instant": false,
+          "legendFormat": "{{exported_service}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "All the individual services",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
+    },
+    {
+      "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -375,6 +432,7 @@
         "x": 0,
         "y": 27
       },
+      "hiddenSeries": false,
       "id": 9,
       "legend": {
         "alignAsTable": false,
@@ -454,10 +512,59 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": ""
+      },
+      "datasource": null,
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 15,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 1,
+        "show": true,
+        "sideWidth": null,
+        "sort": "total",
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (family)",
+          "instant": false,
+          "legendFormat": "{{family}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "All the services families",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
     }
   ],
   "refresh": false,
-  "schemaVersion": 19,
+  "schemaVersion": 21,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -523,5 +630,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 5
+  "version": 6
 }
