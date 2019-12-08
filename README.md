@@ -39,7 +39,7 @@ metrics_certbot_email: metrics@example.com
 ```
 E-mail address (`metrics_certbot_email`) is used by Certbot for notification about certificates that are about to expire ([doc](https://certbot.eff.org/docs/using.html)).
 
-You can encrypt passwords/cesrects using [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
+You can encrypt passwords/secrets using [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
 ```bash
 ansible-vault encrypt_string password123 --ask-vault-pass
 ```
