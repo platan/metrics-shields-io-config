@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1575801032957,
+  "iteration": 1577040065147,
   "links": [],
   "panels": [
     {
@@ -654,6 +654,55 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": ""
+      },
+      "datasource": null,
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 19,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 1,
+        "show": true,
+        "sideWidth": null,
+        "sort": "total",
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_requests_total{env=~\"$env\", exported_service=~\".+_redirect\"}[$__range])) by (exported_service)",
+          "instant": false,
+          "legendFormat": "{{exported_service}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "All redirectors for the individual services",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
     }
   ],
   "refresh": false,
@@ -723,5 +772,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 7
+  "version": 8
 }
