@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1577040065147,
+  "iteration": 1578425021976,
   "links": [],
   "panels": [
     {
@@ -407,7 +407,7 @@
       "targets": [
         {
           "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (exported_service)",
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{exported_service}}",
           "refId": "A"
         }
@@ -549,7 +549,7 @@
       "targets": [
         {
           "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (family)",
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{family}}",
           "refId": "A"
         }
@@ -693,7 +693,7 @@
       "targets": [
         {
           "expr": "sum(increase(service_requests_total{env=~\"$env\", exported_service=~\".+_redirect\"}[$__range])) by (exported_service)",
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{exported_service}}",
           "refId": "A"
         }
@@ -772,5 +772,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 8
+  "version": 9
 }
