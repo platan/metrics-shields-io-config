@@ -1,4 +1,4 @@
-ansible_python_interpreter: /usr/bin/python3
+ansible_python_interpreter: python3
 metrics_domain: localhost
 metrics_port: 8081
 mertics_grafana_admin_password: admin
