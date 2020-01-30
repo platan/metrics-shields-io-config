@@ -15,98 +15,71 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1578425021976,
+  "iteration": 1580407162837,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
+      "collapsed": false,
       "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "panels": [],
+      "title": "Badge usage",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": ""
+      },
+      "datasource": null,
+      "fontSize": "80%",
+      "format": "short",
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 1
       },
-      "hiddenSeries": false,
-      "id": 11,
+      "id": 13,
+      "interval": null,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "percentage": true,
+        "percentageDecimals": 1,
         "show": true,
-        "total": false,
-        "values": false
+        "sideWidth": null,
+        "sort": "total",
+        "sortDesc": true,
+        "values": true
       },
-      "lines": true,
-      "linewidth": 1,
+      "legendType": "Right side",
       "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": "1",
       "targets": [
         {
-          "expr": "rate(service_response_millis_sum{env=~\"$env\"}[1m])/rate(service_response_millis_count{env=~\"$env\"}[1m])",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
+          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (exported_service)",
+          "instant": true,
+          "legendFormat": "{{exported_service}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "Service response time (milliseconds)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "All the individual services",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
     },
     {
       "columns": [],
@@ -116,7 +89,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 1
       },
       "id": 6,
       "links": [],
@@ -131,6 +104,7 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "link": false,
           "pattern": "Time",
@@ -138,6 +112,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -169,96 +144,52 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "breakPoint": "50%",
       "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
+      "combine": {
+        "label": "Others",
+        "threshold": ""
+      },
       "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
+      "fontSize": "80%",
+      "format": "short",
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 10
       },
-      "hiddenSeries": false,
-      "id": 17,
+      "id": 15,
+      "interval": null,
       "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
+        "percentage": true,
+        "percentageDecimals": 1,
         "show": true,
-        "sort": "max",
+        "sideWidth": null,
+        "sort": "total",
         "sortDesc": true,
-        "total": false,
-        "values": false
+        "values": true
       },
-      "lines": true,
-      "linewidth": 1,
+      "legendType": "Right side",
       "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": "1",
       "targets": [
         {
-          "expr": "irate(rate_limit_exceeded_total[1m])",
-          "legendFormat": "{{rate_limit_type}} - {{instance}}",
+          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (family)",
+          "instant": true,
+          "legendFormat": "{{family}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "Rate limit exceeded request per-second rate",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "All the services families",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
     },
     {
       "columns": [],
@@ -268,7 +199,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 10
       },
       "id": 7,
       "links": [],
@@ -283,6 +214,7 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "link": false,
           "pattern": "Time",
@@ -290,6 +222,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -334,7 +267,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "hideTimeOverride": false,
       "id": 4,
@@ -384,9 +317,9 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 19
       },
-      "id": 13,
+      "id": 19,
       "interval": null,
       "legend": {
         "percentage": true,
@@ -406,7 +339,7 @@
       "strokeWidth": "1",
       "targets": [
         {
-          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (exported_service)",
+          "expr": "sum(increase(service_requests_total{env=~\"$env\", exported_service=~\".+_redirect\"}[$__range])) by (exported_service)",
           "instant": true,
           "legendFormat": "{{exported_service}}",
           "refId": "A"
@@ -414,7 +347,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "All the individual services",
+      "title": "All redirectors for the individual services",
       "type": "grafana-piechart-panel",
       "valueName": "total"
     },
@@ -430,7 +363,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 2,
@@ -513,55 +446,6 @@
     },
     {
       "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": ""
-      },
-      "datasource": null,
-      "fontSize": "80%",
-      "format": "short",
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 27
-      },
-      "id": 15,
-      "interval": null,
-      "legend": {
-        "percentage": true,
-        "percentageDecimals": 1,
-        "show": true,
-        "sideWidth": null,
-        "sort": "total",
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "Right side",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "options": {},
-      "pieType": "pie",
-      "strokeWidth": "1",
-      "targets": [
-        {
-          "expr": "sum(increase(service_requests_total{env=~\"$env\"}[$__range])) by (family)",
-          "instant": true,
-          "legendFormat": "{{family}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "All the services families",
-      "type": "grafana-piechart-panel",
-      "valueName": "total"
-    },
-    {
-      "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
@@ -571,8 +455,8 @@
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 0,
-        "y": 36
+        "x": 12,
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 9,
@@ -656,57 +540,219 @@
       }
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": ""
-      },
+      "collapsed": false,
       "datasource": null,
-      "fontSize": "80%",
-      "format": "short",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 23,
+      "panels": [],
+      "title": "Response time",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 12,
-        "y": 36
+        "x": 0,
+        "y": 38
       },
-      "id": 19,
-      "interval": null,
+      "hiddenSeries": false,
+      "id": 11,
       "legend": {
-        "percentage": true,
-        "percentageDecimals": 1,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
         "show": true,
-        "sideWidth": null,
-        "sort": "total",
-        "sortDesc": true,
-        "values": true
+        "total": false,
+        "values": false
       },
-      "legendType": "Right side",
+      "lines": true,
+      "linewidth": 1,
       "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "options": {},
-      "pieType": "pie",
-      "strokeWidth": "1",
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(service_requests_total{env=~\"$env\", exported_service=~\".+_redirect\"}[$__range])) by (exported_service)",
-          "instant": true,
-          "legendFormat": "{{exported_service}}",
+          "expr": "rate(service_response_millis_sum{env=~\"$env\"}[1m])/rate(service_response_millis_count{env=~\"$env\"}[1m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "All redirectors for the individual services",
-      "type": "grafana-piechart-panel",
-      "valueName": "total"
+      "title": "Service response time (milliseconds)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 25,
+      "panels": [],
+      "title": "Rate limit",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 48
+      },
+      "hiddenSeries": false,
+      "id": 17,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(rate_limit_exceeded_total[1m])",
+          "legendFormat": "{{rate_limit_type}} - {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Rate limit exceeded request per-second rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": false,
-  "schemaVersion": 21,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -772,5 +818,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 9
+  "version": 10
 }
