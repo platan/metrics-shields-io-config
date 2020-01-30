@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580407162837,
+  "iteration": 1580407691041,
   "links": [],
   "panels": [
     {
@@ -652,6 +652,300 @@
         "x": 0,
         "y": 47
       },
+      "id": 27,
+      "panels": [],
+      "title": "Response sizes",
+      "type": "row"
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateTurbo",
+        "exponent": 0.5,
+        "mode": "opacity"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": null,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 48
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 29,
+      "interval": "1h",
+      "legend": {
+        "show": false
+      },
+      "options": {},
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "expr": "sum(increase(service_response_bytes_bucket{family=\"dynamic\"}[1h])) by (le)",
+          "format": "heatmap",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service response size in bytes",
+      "tooltip": {
+        "show": true,
+        "showHistogram": true
+      },
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "bytes",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "middle",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": null,
+      "description": "",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 48
+      },
+      "id": 31,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 2,
+        "show": true,
+        "sort": null,
+        "sortDesc": null,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "repeat": null,
+      "repeatDirection": "h",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_response_bytes_bucket{exported_service=\"dynamic_json\"}[$__range])) by(le)",
+          "format": "heatmap",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service response size in bytes (all dynamic badges)",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": null,
+      "description": "",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 57
+      },
+      "id": 33,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 2,
+        "show": true,
+        "sort": null,
+        "sortDesc": null,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "repeatDirection": "h",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_response_bytes_bucket{exported_service=\"dynamic_json\"}[$__range])) by(le)",
+          "format": "heatmap",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service response size in bytes (dynamic JSON)",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": null,
+      "description": "",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 57
+      },
+      "id": 35,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 2,
+        "show": true,
+        "sort": null,
+        "sortDesc": null,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "repeatDirection": "h",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_response_bytes_bucket{exported_service=\"dynamic_xml\"}[$__range])) by(le)",
+          "format": "heatmap",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service response size in bytes (dynamic XML)",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": null,
+      "description": "",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 66
+      },
+      "id": 37,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "percentageDecimals": 2,
+        "show": true,
+        "sort": null,
+        "sortDesc": null,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "repeatDirection": "h",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "sum(increase(service_response_bytes_bucket{exported_service=\"dynamic_yaml\"}[$__range])) by(le)",
+          "format": "heatmap",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service response size in bytes (dynamic YAML)",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 75
+      },
       "id": 25,
       "panels": [],
       "title": "Rate limit",
@@ -670,7 +964,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 48
+        "y": 76
       },
       "hiddenSeries": false,
       "id": 17,
@@ -818,5 +1112,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 10
+  "version": 11
 }
