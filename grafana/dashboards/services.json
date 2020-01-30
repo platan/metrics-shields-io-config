@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580407691041,
+  "iteration": 1580408389713,
   "links": [],
   "panels": [
     {
@@ -274,6 +274,7 @@
       "interval": null,
       "legend": {
         "percentage": true,
+        "percentageDecimals": 1,
         "show": true,
         "sort": "total",
         "sortDesc": true,
@@ -1112,5 +1113,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 11
+  "version": 12
 }
