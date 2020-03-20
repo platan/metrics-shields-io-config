@@ -42,6 +42,11 @@
       honor_labels: true
       static_configs:
       - targets: ['localhost:9273']
+      metric_relabel_configs:
+      - source_labels: [service]
+        target_label: exported_service
+      - action: labeldrop
+        regex: service
     - job_name: 'prometheus'
       static_configs:
       - targets: ['localhost:9090']
@@ -55,6 +60,7 @@
         - targets: ['s0.shields-server.com', 's1.shields-server.com', 's2.shields-server.com']
           labels:
             service: shields
+            application: shields
             env: shields-io-production
       tls_config:
         insecure_skip_verify: true
@@ -181,6 +187,15 @@
               # this role creates 'nginx' user and installs nginx
               # this htpasswd file will be created in the next task, because it have to be owned by 'nginx' user
               auth_basic_file: /etc/nginx/.htpasswd.{{ metrics_domain }}-prometheus
+            telegraf:
+              location: /telegraf
+              proxy_connect_timeout: 5
+              proxy_pass: http://localhost:8082
+              proxy_read_timeout: 5
+              auth_basic: "Restricted Content"
+              # this role creates 'nginx' user and installs nginx
+              # this htpasswd file will be created in the next task, because it have to be owned by 'nginx' user
+              # auth_basic_file: /etc/nginx/.htpasswd.{{ metrics_domain }}-telegraf
   tags:
     - nginx
   tasks:
@@ -189,11 +204,21 @@
       name: python3-passlib
     tags:
       - nginx-htpasswd
-  - name: Create a password file for nginx
+  - name: Create a password file for prometheus
     htpasswd:
       path: /etc/nginx/.htpasswd.{{ metrics_domain }}-prometheus
       name: prometheus
       password: '{{ mertics_prometheus_password }}'
+      owner: nginx
+      group: root
+      mode: 0640
+    tags:
+      - nginx-htpasswd
+  - name: Create a password file for telegraf
+    htpasswd:
+      path: /etc/nginx/.htpasswd.{{ metrics_domain }}-telegraf
+      name: telegraf
+      password: '{{ mertics_telegraf_password }}'
       owner: nginx
       group: root
       mode: 0640
@@ -237,12 +262,21 @@
         config:
           - service_address = ":8082"
           - data_format = "influx"
+          - max_body_size = "1MB"
     telegraf_agent_output:
       - type: prometheus_client
         config:
           - listen = ":9273"
-          - metric_version = 1
-          - expiration_interval = "60s"
+          - metric_version = 2
+          - expiration_interval = "20s"
           - collectors_exclude = ["gocollector", "process"]
+          # seems that 'export_timestamp = true' does not work
+          # - export_timestamp = true
+      - type: file
+        config:
+          - files = ["/tmp/metrics.out"]
+          - data_format = "influx"
+          - rotation_max_size = "10MB"
+          - rotation_max_archives = 10
   tags:
     - telegraf
