@@ -50,6 +50,7 @@
       static_configs:
         - targets: ['s0.shields-server.com', 's1.shields-server.com', 's2.shields-server.com']
           labels:
+            application: shields
             service: shields
             env: shields-io-production
       tls_config:
