@@ -28,7 +28,7 @@
   roles:
     - cloudalchemy.prometheus
   vars:
-    prometheus_version: 2.15.2
+    prometheus_version: 2.16.0
     # override extra labels added by cloudalchemy.prometheus role
     prometheus_external_labels: {}
     prometheus_web_external_url: "http://{{ metrics_domain }}/prometheus/"
@@ -59,6 +59,7 @@
       static_configs:
         - targets: ['s0.shields-server.com', 's1.shields-server.com', 's2.shields-server.com']
           labels:
+            application: shields
             service: shields
             application: shields
             env: shields-io-production
@@ -91,7 +92,7 @@
   roles:
     - cloudalchemy.grafana
   vars:
-    grafana_version: 6.6.0
+    grafana_version: 6.7.1
     grafana_security:
       admin_user: admin
       admin_password: "{{mertics_grafana_admin_password}}"

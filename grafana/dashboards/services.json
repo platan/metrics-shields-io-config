@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580408389713,
+  "iteration": 1584812685382,
   "links": [],
   "panels": [
     {
@@ -1061,14 +1061,14 @@
           ]
         },
         "datasource": "Prometheus-default",
-        "definition": "label_values({service=\"shields\"}, env)",
+        "definition": "label_values(env)",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "env",
         "options": [],
-        "query": "label_values({service=\"shields\"}, env)",
+        "query": "label_values(env)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1113,5 +1113,5 @@
   "timezone": "utc",
   "title": "services",
   "uid": "aESRBSjmz",
-  "version": 12
+  "version": 13
 }
