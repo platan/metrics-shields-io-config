@@ -17,7 +17,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1567971195852,
+  "iteration": 1584812825556,
   "links": [],
   "panels": [
     {
@@ -34,6 +34,7 @@
         "x": 0,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 26,
       "legend": {
         "avg": false,
@@ -123,6 +124,7 @@
         "x": 6,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 18,
       "legend": {
         "avg": false,
@@ -222,6 +224,7 @@
         "x": 12,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 28,
       "legend": {
         "alignAsTable": true,
@@ -330,6 +333,7 @@
       "styles": [
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -346,6 +350,7 @@
         },
         {
           "alias": "Number of instances",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -363,6 +368,7 @@
         },
         {
           "alias": "Version",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -409,6 +415,7 @@
         "x": 0,
         "y": 9
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "alignAsTable": false,
@@ -500,6 +507,7 @@
         "x": 6,
         "y": 9
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "avg": false,
@@ -589,6 +597,7 @@
         "x": 12,
         "y": 9
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "avg": false,
@@ -678,6 +687,7 @@
         "x": 18,
         "y": 9
       },
+      "hiddenSeries": false,
       "id": 16,
       "legend": {
         "avg": false,
@@ -781,6 +791,7 @@
         "x": 0,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 10,
       "legend": {
         "avg": false,
@@ -870,6 +881,7 @@
         "x": 6,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 12,
       "legend": {
         "avg": false,
@@ -967,6 +979,7 @@
         "x": 12,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "alignAsTable": false,
@@ -1056,7 +1069,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 19,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [
     "Node.js",
@@ -1074,14 +1087,14 @@
           ]
         },
         "datasource": "Prometheus-default",
-        "definition": "label_values({service=\"shields\"}, env)",
+        "definition": "label_values(nodejs_version_info, env)",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "env",
         "options": [],
-        "query": "label_values({service=\"shields\"}, env)",
+        "query": "label_values(nodejs_version_info, env)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1095,18 +1108,19 @@
       {
         "allValue": null,
         "current": {
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "Prometheus-default",
-        "definition": "label_values({service=\"shields\", env=~\"$env\"}, instance)",
+        "definition": "label_values(nodejs_version_info{env=~\"$env\"}, instance)",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "instance",
         "options": [],
-        "query": "label_values({service=\"shields\", env=~\"$env\"}, instance)",
+        "query": "label_values(nodejs_version_info{env=~\"$env\"}, instance)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1151,5 +1165,5 @@
   "timezone": "utc",
   "title": "prom-client default metrics",
   "uid": "g_1B7zhik",
-  "version": 2
+  "version": 3
 }
