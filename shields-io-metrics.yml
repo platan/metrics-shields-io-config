@@ -61,7 +61,6 @@
           labels:
             application: shields
             service: shields
-            application: shields
             env: shields-io-production
       tls_config:
         insecure_skip_verify: true
