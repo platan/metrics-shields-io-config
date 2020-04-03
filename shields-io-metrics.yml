@@ -56,6 +56,7 @@
       scrape_interval: 60s
     - job_name: 'shields-io-production'
       scheme: https
+      scrape_timeout: 13s
       static_configs:
         - targets: ['s0.shields-server.com', 's1.shields-server.com', 's2.shields-server.com']
           labels:
