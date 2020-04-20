@@ -41,7 +41,7 @@ E-mail address (`metrics_certbot_email`) is used by Certbot for notification abo
 
 You can encrypt passwords/secrets using [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
 ```bash
-ansible-vault encrypt_string password123 --ask-vault-pass
+ansible-vault encrypt_string --ask-vault-pass --stdin-name 'my_key'
 ```
 6. Run a playbook:
 ```bash
