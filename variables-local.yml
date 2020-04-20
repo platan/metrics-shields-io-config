@@ -6,3 +6,5 @@ metrics_grafana_github_client_id: 1
 metrics_grafana_github_client_secret: 2
 mertics_prometheus_password: prometheuspass
 mertics_telegraf_password: telegrafpass
+mertics_telegraf_staging_password: telegrafstagingpass
+mertics_telegraf_production_password: telegrafproductionpass

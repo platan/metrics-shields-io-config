@@ -258,11 +258,15 @@
   - name: Create a password file for telegraf
     htpasswd:
       path: /etc/nginx/.htpasswd.{{ metrics_domain }}-telegraf
-      name: telegraf
-      password: '{{ mertics_telegraf_password }}'
+      name: '{{ item.name }}'
+      password: '{{ item.password }}'
       owner: nginx
       group: root
       mode: 0640
+    with_items:
+      - { name: 'telegraf', password: '{{ mertics_telegraf_password }}' }
+      - { name: 'telegraf-staging', password: '{{ mertics_telegraf_staging_password }}' }
+      - { name: 'telegraf-production', password: '{{ mertics_telegraf_production_password }}' }
     tags:
       - nginx-htpasswd
 - name: Install Let's Encrypt certificate and enable HTTPS in nginx
