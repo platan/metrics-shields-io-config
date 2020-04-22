@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1585081016994,
+  "iteration": 1587580201088,
   "links": [],
   "panels": [
     {
@@ -757,7 +757,7 @@
       "strokeWidth": "1",
       "targets": [
         {
-          "expr": "sum(increase(service_response_bytes_bucket{env=~\"$env\", exported_service=\"dynamic_json\"}[$__range])) by(le)",
+          "expr": "sum(increase(service_response_bytes_bucket{env=~\"$env\", family=\"dynamic\"}[$__range])) by(le)",
           "format": "heatmap",
           "instant": false,
           "interval": "",
