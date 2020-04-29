@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:14",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -17,7 +18,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1584812825556,
+  "iteration": 1588179411528,
   "links": [],
   "panels": [
     {
@@ -320,7 +321,6 @@
       "hideTimeOverride": false,
       "id": 30,
       "links": [],
-      "options": {},
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
@@ -1081,15 +1081,16 @@
       {
         "allValue": null,
         "current": {
-          "text": "shields-io-production",
+          "text": "shields-production",
           "value": [
-            "shields-io-production"
+            "shields-production"
           ]
         },
         "datasource": "Prometheus-default",
         "definition": "label_values(nodejs_version_info, env)",
         "hide": 0,
         "includeAll": true,
+        "index": -1,
         "label": null,
         "multi": true,
         "name": "env",
@@ -1108,14 +1109,16 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "Prometheus-default",
         "definition": "label_values(nodejs_version_info{env=~\"$env\"}, instance)",
         "hide": 0,
         "includeAll": true,
+        "index": -1,
         "label": null,
         "multi": true,
         "name": "instance",
@@ -1165,5 +1168,8 @@
   "timezone": "utc",
   "title": "prom-client default metrics",
   "uid": "g_1B7zhik",
-  "version": 3
+  "variables": {
+    "list": []
+  },
+  "version": 4
 }

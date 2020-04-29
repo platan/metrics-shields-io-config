@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1587580201088,
+  "iteration": 1588179453803,
   "links": [],
   "panels": [
     {
@@ -1046,9 +1046,10 @@
       {
         "allValue": null,
         "current": {
-          "text": "shields-io-production",
+          "tags": [],
+          "text": "shields-production",
           "value": [
-            "shields-io-production"
+            "shields-production"
           ]
         },
         "datasource": "Prometheus-default",
@@ -1108,5 +1109,5 @@
   "variables": {
     "list": []
   },
-  "version": 14
+  "version": 16
 }
