@@ -71,4 +71,9 @@ vagrant up
 
 Credentials are defined in `variables-local.yml`.
 
+It is possible to run Ansible manually against local machine:
+```sh
+ansible-playbook shields-io-metrics.yml --private-key .vagrant/machines/metrics/virtualbox/private_key -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -e @variables-local.yml --tags grafana
+```
+
 Finally you can stop (`vagrant halt`) or remove (`vagrant destroy`) the virtual server.
