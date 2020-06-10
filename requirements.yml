@@ -7,6 +7,6 @@
 - name: cloudalchemy.node-exporter
   version: 0.16.0
 - name: cloudalchemy.blackbox-exporter
-  version: 0.8.0
+  version: 0.9.1
 - name: dj-wasabi.telegraf
   version: 0.12.0
