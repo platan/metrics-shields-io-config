@@ -152,6 +152,7 @@
     - restart grafana
   handlers:
     - name: restart grafana
+      become: yes
       service:
         name: grafana-server
         state: restarted
