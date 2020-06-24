@@ -48,6 +48,13 @@ ansible-vault encrypt_string --ask-vault-pass --stdin-name 'my_key'
 ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass
 ```
 
+### Resources
+Resource | Path | Access restrictions
+---|---|---
+Grafana | `/` | public access for all dashboards; administration using username `admin` and password from `mertics_grafana_admin_password` variable or using GitHub authentication
+Prometheus | `/prometheus` | requires username `prometheus` and password from `mertics_prometheus_password` variable
+Telegraf | `/telegraf` | requires username `telegraf` and password from `mertics_telegraf_password` variable <br>or username `telegraf-staging` and password from `mertics_telegraf_staging_password` variable <br>or username `telegraf-production` and password from `mertics_telegraf_production_password` variable
+
 ### https://metrics.shields.io/
 
 https://metrics.shields.io/ uses one single-core virtual host with 2 GB RAM [VPS SSD 1](https://www.ovh.com/world/vps/vps-ssd.xml) with Ubuntu 18.04.
