@@ -48,6 +48,16 @@ ansible-vault encrypt_string --ask-vault-pass --stdin-name 'my_key'
 ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass
 ```
 
+### Updating components
+
+#### Grafana
+- update `grafana_version` in `shields-io-metrics.yml` file
+- run the playbook with `grafana` tag: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags grafana`
+
+#### Prometheus
+- update `prometheus_version` in `shields-io-metrics.yml` file
+- run the playbook with `prometheus` tag: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags prometheus`
+
 ### Resources
 Resource | Path | Access restrictions
 ---|---|---
