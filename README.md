@@ -12,7 +12,10 @@ worldPing has to be [enabled manually](https://grafana.com/plugins/raintank-worl
 
 ### How to use it?
 
-1. Install Ansible ([doc](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html))
+1. Install python dependencies in a python 3 virtual environment:
+```bash
+pip install -r requirements.txt
+```
 2. Prepare an inventory file `inventory.ini`:
 ```ini
 metrics ansible_host=metrics.example.com ansible_port=22 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
