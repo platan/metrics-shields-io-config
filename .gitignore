@@ -1,2 +1,7 @@
 *.retry
 vendor/*
+
+# Vagrant files
+.vagrant
+roles/*
+ubuntu-bionic-18.04-cloudimg-console.log
