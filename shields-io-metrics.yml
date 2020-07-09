@@ -165,7 +165,9 @@
     - role: nginxinc.nginx
       tags: [nginx-role]
   vars:
-    nginx_version: "=1.15.9-1~bionic"
+    # 1.18.0 is not available in nginx repository: https://nginx.org/en/linux_packages.html#Ubuntu
+    # the next available version after 1.17.x is 1.19.x
+    nginx_version: "=1.17.10-1~bionic"
     nginx_http_template_enable: true
     nginx_http_template:
      default:
