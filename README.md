@@ -51,6 +51,18 @@ ansible-vault encrypt_string --ask-vault-pass --stdin-name 'my_key'
 ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass
 ```
 
+### Component versions
+
+Ansible roles
+| name | latest | used in this playbook |
+|---|---|---|
+| cloudalchemy.prometheus | ![](https://img.shields.io/github/v/release/cloudalchemy/ansible-prometheus?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27cloudalchemy.prometheus%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
+| cloudalchemy.grafana | ![](https://img.shields.io/github/v/release/cloudalchemy/ansible-grafana?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27cloudalchemy.grafana%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
+| cloudalchemy.node-exporter | ![](https://img.shields.io/github/v/release/cloudalchemy/ansible-node-exporter?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27cloudalchemy.node-exporter%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
+| cloudalchemy.blackbox-exporter | ![](https://img.shields.io/github/v/release/cloudalchemy/ansible-blackbox-exporter?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27cloudalchemy.blackbox-exporter%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
+| dj-wasabi.telegraf | ![](https://img.shields.io/github/v/tag/dj-wasabi/ansible-telegraf?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27dj-wasabi.telegraf%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
+| nginxinc.nginx | ![](https://img.shields.io/github/v/tag/nginxinc/ansible-role-nginx?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27nginxinc.nginx%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
+
 ### Updating components
 
 #### Grafana
