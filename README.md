@@ -54,7 +54,7 @@ ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask
 ### Component versions
 
 Ansible roles
-| name | latest | used in this playbook |
+| Name | The latest version | Version used in this playbook |
 |---|---|---|
 | cloudalchemy.prometheus | ![](https://img.shields.io/github/v/release/cloudalchemy/ansible-prometheus?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27cloudalchemy.prometheus%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
 | cloudalchemy.grafana | ![](https://img.shields.io/github/v/release/cloudalchemy/ansible-grafana?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..%5B%3F%28%40.name%3D%3D%27cloudalchemy.grafana%27%29%5D.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Frequirements.yml) |
