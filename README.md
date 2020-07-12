@@ -85,6 +85,17 @@ Ansible roles
 - update `nginx_version` in `shields-io-metrics.yml` file
 - run the playbook with `nginx,certbot-nginx` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags nginx,certbot-nginx`
 
+#### Any Ansible role
+- update version in `requirements.yml`
+- run `ansible-galaxy install -r requirements.yml --force`
+- run the playbook with one of the tags: 
+  - `blackbox-exporter`
+  - `node-exporter`
+  - `prometheus`
+  - `grafana`
+  - `nginx,certbot-nginx`
+  - `telegraf`
+
 ### Resources
 Resource | Path | Access restrictions
 ---|---|---
