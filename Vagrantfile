@@ -15,5 +15,6 @@ Vagrant.configure("2") do |config|
     ansible.skip_tags = ["certbot-obtain", "certbot-nginx"]
     ansible.become = true
     ansible.galaxy_role_file = "requirements.yml"
+    ansible.galaxy_roles_path = "roles_for_vagrant"
   end
 end

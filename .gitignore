@@ -3,5 +3,5 @@ vendor/*
 
 # Vagrant files
 .vagrant
-roles/*
+roles_for_vagrant/*
 ubuntu-bionic-18.04-cloudimg-console.log
