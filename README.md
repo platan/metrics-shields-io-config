@@ -53,6 +53,14 @@ ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask
 
 ### Component versions
 
+Services
+| Name | The latest version | Version used in this playbook |
+|---|---|---|
+| Grafana | ![](https://img.shields.io/github/v/release/grafana/grafana?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..grafana_version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fshields-io-metrics.yml) |
+| Nginx | ![](https://img.shields.io/github/v/tag/nginx/nginx?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..nginx_version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fshields-io-metrics.yml) |
+| Prometheus | ![](https://img.shields.io/github/v/release/prometheus/prometheus?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..prometheus_version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fshields-io-metrics.yml) |
+
+
 Ansible roles
 | Name | The latest version | Version used in this playbook |
 |---|---|---|
