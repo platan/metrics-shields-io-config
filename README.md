@@ -81,7 +81,7 @@ Ansible roles
 - update `prometheus_version` in `shields-io-metrics.yml` file
 - run the playbook with `prometheus` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags prometheus`
 
-### Nginx
+#### Nginx
 - update `nginx_version` in `shields-io-metrics.yml` file
 - run the playbook with `nginx,certbot-nginx` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags nginx,certbot-nginx`
 
