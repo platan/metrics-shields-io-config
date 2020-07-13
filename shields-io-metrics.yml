@@ -305,8 +305,11 @@
   roles:
     - dj-wasabi.telegraf
   vars:
+  # apt repository contains only the latest version:
+  # https://github.com/dj-wasabi/ansible-telegraf/issues/95#issuecomment-480397359, https://github.com/influxdata/telegraf/issues/5685
+    telegraf_agent_version: 1.14.5
     telegraf_agent_package_method: repo
-    telegraf_agent_package_state: latest
+    telegraf_agent_package_state: present
     telegraf_agent_omit_hostname: true
     telegraf_plugins_default: []
     telegraf_plugins_extra:
