@@ -85,6 +85,14 @@ Ansible roles
 - update `nginx_version` in `shields-io-metrics.yml` file
 - run the playbook with `nginx,certbot-nginx` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags nginx,certbot-nginx`
 
+#### Node exporter, Blackbox exporter
+These components do not have a fixed version in `shields-io-metrics.yml` file. The playbook is using the default version value defined in corresponding Ansible roles. Usually, the new versions of Ansible role for these components are released shortly after releasing components. To update the component simply update the Ansible role (instructions below).
+
+#### Telegraf
+:warning: apt repository containing Telegraf contains only the latest version (https://github.com/dj-wasabi/ansible-telegraf/issues/95#issuecomment-480397359, https://github.com/influxdata/telegraf/issues/5685)
+- update `telegraf_agent_version` in `shields-io-metrics.yml` file
+- run the playbook with `telegraf` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags telegraf`
+
 #### Any Ansible role
 - update version in `requirements.yml`
 - run `ansible-galaxy install -r requirements.yml --force`
