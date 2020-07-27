@@ -56,9 +56,9 @@ ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask
 Services
 | Name | The latest version | Version used in this playbook |
 |---|---|---|
-| Grafana | ![](https://img.shields.io/github/v/release/grafana/grafana?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..grafana_version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fshields-io-metrics.yml) |
-| Nginx | ![](https://img.shields.io/github/v/tag/nginx/nginx?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..nginx_version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fshields-io-metrics.yml) |
-| Prometheus | ![](https://img.shields.io/github/v/release/prometheus/prometheus?label=version) | ![](https://img.shields.io/badge/dynamic/yaml?color=blue&label=version&query=%24..prometheus_version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fshields-io-metrics.yml) |
+| Grafana | ![](https://img.shields.io/github/v/release/grafana/grafana?label=version) | ![](https://img.shields.io/badge/dynamic/json?color=blue&label=version&query=%24..grafana.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fversions.json) |
+| Nginx | ![](https://img.shields.io/github/v/tag/nginx/nginx?label=version) | ![](https://img.shields.io/badge/dynamic/json?color=blue&label=version&query=%24..nginx.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fversions.json) |
+| Prometheus | ![](https://img.shields.io/github/v/release/prometheus/prometheus?label=version) | ![](https://img.shields.io/badge/dynamic/json?color=blue&label=version&query=%24..prometheus.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fplatan%2Fmetrics-shields-io-config%2Fmaster%2Fversions.json) |
 
 
 Ansible roles
@@ -74,24 +74,24 @@ Ansible roles
 ### Updating components
 
 #### Grafana
-- update `grafana_version` in `shields-io-metrics.yml` file
-- run the playbook with `grafana` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags grafana`
+- update `grafana.version` in `versions.json` file
+- run the playbook with `grafana` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.json --ask-vault-pass --ask-become-pass --tags grafana`
 
 #### Prometheus
-- update `prometheus_version` in `shields-io-metrics.yml` file
-- run the playbook with `prometheus` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags prometheus`
+- update `prometheus.version` in `versions.json` file
+- run the playbook with `prometheus` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.json --ask-vault-pass --ask-become-pass --tags prometheus`
 
 #### Nginx
-- update `nginx_version` in `shields-io-metrics.yml` file
-- run the playbook with `nginx,certbot-nginx` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags nginx,certbot-nginx`
+- update `nginx.version` in `versions.json` file
+- run the playbook with `nginx,certbot-nginx` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.json --ask-vault-pass --ask-become-pass --tags nginx,certbot-nginx`
 
 #### Node exporter, Blackbox exporter
-These components do not have a fixed version in `shields-io-metrics.yml` file. The playbook is using the default version value defined in corresponding Ansible roles. Usually, the new versions of Ansible role for these components are released shortly after releasing components. To update the component simply update the Ansible role (instructions below).
+These components do not have a fixed version in `versions.json` file or in `shields-io-metrics.yml` file. The playbook is using the default version value defined in corresponding Ansible roles. Usually, the new versions of Ansible role for these components are released shortly after releasing components. To update the component simply update the Ansible role (instructions below).
 
 #### Telegraf
 :warning: apt repository containing Telegraf contains only the latest version (https://github.com/dj-wasabi/ansible-telegraf/issues/95#issuecomment-480397359, https://github.com/influxdata/telegraf/issues/5685)
-- update `telegraf_agent_version` in `shields-io-metrics.yml` file
-- run the playbook with `telegraf` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass --tags telegraf`
+- update `telegraf.version` in `versions.json` file
+- run the playbook with `telegraf` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.json --ask-vault-pass --ask-become-pass --tags telegraf`
 
 #### Any Ansible role
 - update version in `requirements.yml`
@@ -136,7 +136,7 @@ Credentials are defined in `variables-local.yml`.
 
 It is possible to run Ansible manually against local machine:
 ```sh
-ansible-playbook shields-io-metrics.yml --private-key .vagrant/machines/metrics/virtualbox/private_key -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -e @variables-local.yml --tags grafana
+ansible-playbook shields-io-metrics.yml --private-key .vagrant/machines/metrics/virtualbox/private_key -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -e @variables-local.yml -e @versions.json --tags grafana
 ```
 
 Finally you can stop (`vagrant halt`) or remove (`vagrant destroy`) the virtual server.
