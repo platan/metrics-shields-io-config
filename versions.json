@@ -13,6 +13,6 @@
   },
   "telegraf": {
     "version": "1.14.5",
-    "repository": "telegraf/telegraf"
+    "repository": "influxdata/telegraf"
   }
 }
