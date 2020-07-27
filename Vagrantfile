@@ -11,7 +11,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "shields-io-metrics.yml"
-    ansible.extra_vars = "variables-local.yml"
+    # extra_vars accepts one file only, using raw_arguments to pass two files
+    # "-e=@variables-local.yml" works, but "-e @variables-local.yml" does not work
+    ansible.raw_arguments = ["-e=@variables-local.yml", "-e=@versions.json"]
     ansible.skip_tags = ["certbot-obtain", "certbot-nginx"]
     ansible.become = true
     ansible.galaxy_role_file = "requirements.yml"
