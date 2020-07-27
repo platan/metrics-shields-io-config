@@ -1,0 +1,58 @@
+name: Update dependencies
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron:  '0 */6 * * *'
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dependency: ['grafana', 'prometheus', 'telegraf']
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install jq moreutils
+    - name: Get dependency repository name
+      id: dependency_repository
+      run: |
+        dependency="${{ matrix.dependency }}"
+        repository=$(jq -r ".[\"$dependency\"].repository" versions.json)
+        echo "$repository is a $dependency repository"
+        echo "::set-output name=repository::$repository"
+    - name: Get the latest version
+      uses: octokit/request-action@v2.0.10
+      id: get_latest_release
+      with:
+        route: GET /repos/${{ steps.dependency_repository.outputs.repository }}/releases/latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Update versions.json
+      id: update
+      run: |
+        dependency="${{ matrix.dependency }}"
+        current_version=$(jq -r ".[\"$dependency\"].version" versions.json)
+        latest_version=$(echo "${{ fromJson(steps.get_latest_release.outputs.data).tag_name }}" | sed s/^v//)
+        echo "The current version of $dependency is $current_version"
+        echo "The latest version of $dependency is $latest_version"
+        if [ "$current_version" != "$latest_version" ]
+        then
+          echo "Updating $dependency to version $latest_version"
+          echo "versions.json before update"
+          echo "***" && cat versions.json && echo "***"
+          jq ".$dependency.version = \"$latest_version\"" versions.json | sponge versions.json
+          echo "versions.json after update"
+          echo "***" && cat versions.json && echo "***"
+          echo "::set-output name=new_version::$latest_version"
+        fi
+    - name: Create a pull request
+      uses: peter-evans/create-pull-request@v2.8.1
+      with:
+        title: 'Upgrade ${{ matrix.dependency }} to ${{ steps.update.outputs.new_version }}'
+        body: This PR was created automatically by the workflow defined in https://github.com/platan/metrics-shields-io-config/blob/master/.github/workflows/update-dependencies.yml.
+        branch: ${{ matrix.dependency }}-${{ steps.update.outputs.new_version }}
+        labels: dependencies
