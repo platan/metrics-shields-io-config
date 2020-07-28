@@ -16,7 +16,6 @@ jobs:
         - prometheus
         - telegraf
         - cloudalchemy.prometheus
-        - nginxinc.nginx
         - cloudalchemy.grafana
         - cloudalchemy.node-exporter
         - cloudalchemy.blackbox-exporter
