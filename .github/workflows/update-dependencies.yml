@@ -15,7 +15,11 @@ jobs:
         - grafana
         - prometheus
         - telegraf
+        - cloudalchemy.prometheus
+        - nginxinc.nginx
+        - cloudalchemy.grafana
         - cloudalchemy.node-exporter
+        - cloudalchemy.blackbox-exporter
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
