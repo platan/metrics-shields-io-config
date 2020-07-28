@@ -53,6 +53,7 @@ jobs:
       uses: peter-evans/create-pull-request@v2.8.1
       with:
         title: 'Upgrade ${{ matrix.dependency }} to ${{ steps.update.outputs.new_version }}'
+        commit-message: 'Upgrade ${{ matrix.dependency }} to ${{ steps.update.outputs.new_version }}'
         body: This PR was created automatically by the [update dependencies workflow](https://github.com/platan/metrics-shields-io-config/blob/master/.github/workflows/update-dependencies.yml).
         branch: ${{ matrix.dependency }}-${{ steps.update.outputs.new_version }}
         labels: dependencies
