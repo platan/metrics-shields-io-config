@@ -3,10 +3,6 @@
     "version": "7.1.1",
     "repository": "grafana/grafana"
   },
-  "nginx": {
-    "version": "1.17.10",
-    "repository": "nginx/nginx"
-  },
   "prometheus": {
     "version": "2.19.2",
     "repository": "prometheus/prometheus"
@@ -17,10 +13,6 @@
   },
   "cloudalchemy.prometheus": {
     "repository": "cloudalchemy/ansible-prometheus",
-    "type": "ansible-role"
-  },
-  "nginxinc.nginx": {
-    "repository": "nginxinc/ansible-role-nginx",
     "type": "ansible-role"
   },
   "cloudalchemy.grafana": {
