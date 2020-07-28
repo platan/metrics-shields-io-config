@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dependency: ['grafana', 'prometheus', 'telegraf', 'cloudalchemy.node-exporter']
+        dependency:
+        - grafana
+        - prometheus
+        - telegraf
+        - cloudalchemy.node-exporter
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
