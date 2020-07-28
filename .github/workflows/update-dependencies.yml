@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dependency: ['grafana', 'prometheus', 'telegraf']
+        dependency: ['grafana', 'prometheus', 'telegraf', 'cloudalchemy.node-exporter']
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo apt-get install jq moreutils
+      run: |
+        sudo apt-get install jq moreutils
+        sudo snap install yq
     - name: Get dependency repository name
       id: dependency_repository
       run: |
@@ -37,17 +39,39 @@ jobs:
         dependency="${{ matrix.dependency }}"
         current_version=$(jq -r ".[\"$dependency\"].version" versions.json)
         latest_version=$(echo "${{ fromJson(steps.get_latest_release.outputs.data).tag_name }}" | sed s/^v//)
-        echo "The current version of $dependency is $current_version"
-        echo "The latest version of $dependency is $latest_version"
-        if [ "$current_version" != "$latest_version" ]
+        type=$(jq -r ".[\"$dependency\"].type" versions.json)
+        if [ "$current_version" != "null" ]
         then
-          echo "Updating $dependency to version $latest_version"
-          echo "versions.json before update"
-          echo "***" && cat versions.json && echo "***"
-          jq ".$dependency.version = \"$latest_version\"" versions.json | sponge versions.json
-          echo "versions.json after update"
-          echo "***" && cat versions.json && echo "***"
-          echo "::set-output name=new_version::$latest_version"
+          echo "The current version of $dependency is $current_version"
+          echo "The latest version of $dependency is $latest_version"
+          if [ "$current_version" != "$latest_version" ]
+          then
+            echo "Updating $dependency to version $latest_version"
+            echo "versions.json before update"
+            echo "***" && cat versions.json && echo "***"
+            jq ".$dependency.version = \"$latest_version\"" versions.json | sponge versions.json
+            echo "versions.json after update"
+            echo "***" && cat versions.json && echo "***"
+            echo "::set-output name=new_version::$latest_version"
+          fi
+        elif [ "$type" = "ansible-role" ]
+        then
+          current_version=$(yq r requirements.yml "(name==$dependency).version")
+          echo "The current version of $dependency is $current_version"
+          echo "The latest version of $dependency is $latest_version"
+          if [ "$current_version" != "" ] && [ "$current_version" != "$latest_version" ]
+          then
+            echo "Updating $dependency to version $latest_version"
+            echo "requirements.yml before update"
+            echo "***" && cat requirements.yml && echo "***"
+            yq w -i requirements.yml "(name==$dependency).version" $latest_version
+            echo "requirements.yml after update"
+            echo "***" && cat requirements.yml && echo "***"
+            echo "::set-output name=new_version::$latest_version"
+          fi
+        else
+          echo "Unsupported type $type"
+          exit 1
         fi
     - name: Create a pull request
       uses: peter-evans/create-pull-request@v2.8.1
