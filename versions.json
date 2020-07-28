@@ -14,5 +14,9 @@
   "telegraf": {
     "version": "1.15.1",
     "repository": "influxdata/telegraf"
+  },
+  "cloudalchemy.node-exporter": {
+    "repository": "cloudalchemy/ansible-node-exporter",
+    "type": "ansible-role"
   }
 }
