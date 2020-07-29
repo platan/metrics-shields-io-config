@@ -3,6 +3,10 @@
     "version": "7.1.1",
     "repository": "grafana/grafana"
   },
+  "nginx": {
+    "version": "1.17.10",
+    "repository": "nginx/nginx"
+  },
   "prometheus": {
     "version": "2.19.2",
     "repository": "prometheus/prometheus"
