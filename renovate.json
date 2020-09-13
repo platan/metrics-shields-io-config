@@ -5,9 +5,9 @@
   },
   "regexManagers": [
     {
-      "fileMatch": ["^versions.yml$"],
+      "fileMatch": ["^versions\\.yml$"],
       "matchStrings": [
-        "^# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s.*?: (?<currentValue>.*?)$"
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n.*?: (?<currentValue>.*)"
       ]
     }
   ]
