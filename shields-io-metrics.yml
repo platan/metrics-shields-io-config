@@ -28,7 +28,7 @@
   roles:
     - cloudalchemy.prometheus
   vars:
-    prometheus_version: "{{ prometheus.version }}"
+    prometheus_version: "{{ metrics_prometheus_version }}"
     # override extra labels added by cloudalchemy.prometheus role
     prometheus_external_labels: {}
     prometheus_web_external_url: "http://{{ metrics_domain }}/prometheus/"
@@ -92,7 +92,7 @@
   roles:
     - cloudalchemy.grafana
   vars:
-    grafana_version: '{{ grafana.version }}'
+    grafana_version: '{{ metrics_grafana_version }}'
     grafana_security:
       admin_user: admin
       admin_password: "{{mertics_grafana_admin_password}}"
@@ -167,7 +167,7 @@
   vars:
     # 1.18.0 is not available in nginx repository: https://nginx.org/en/linux_packages.html#Ubuntu
     # the next available version after 1.17.x is 1.19.x
-    nginx_version: "={{ nginx.version }}-1~bionic"
+    nginx_version: "={{ metrics_nginx_version }}-1~bionic"
     nginx_http_template_enable: true
     nginx_http_template:
      default:
@@ -307,7 +307,7 @@
   vars:
   # apt repository contains only the latest version:
   # https://github.com/dj-wasabi/ansible-telegraf/issues/95#issuecomment-480397359, https://github.com/influxdata/telegraf/issues/5685
-    telegraf_agent_version: '{{ telegraf.version }}'
+    telegraf_agent_version: '{{ metrics_telegraf_version }}'
     telegraf_agent_package_method: repo
     telegraf_agent_package_state: present
     telegraf_agent_omit_hostname: true
