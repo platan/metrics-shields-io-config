@@ -1,0 +1,9 @@
+---
+# renovate: datasource=github-releases depName=grafana/grafana
+grafana.version: 7.1.4
+# renovate: datasource=github-tags depName=nginx/nginx
+nginx.version: 1.17.10
+# renovate: datasource=github-releases depName=prometheus/prometheus
+prometheus.version: 2.20.1
+# renovate: datasource=github-releases depName=influxdata/telegraf
+telegraf.version: 1.15.2

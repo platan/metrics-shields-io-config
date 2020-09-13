@@ -2,5 +2,13 @@
   "extends": ["config:base"],
   "python": {
     "enabled": false
-  }
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["^versions.yml$"],
+      "matchStrings": [
+        "^# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s.*?: (?<currentValue>.*?)$"
+      ]
+    }
+  ]
 }
