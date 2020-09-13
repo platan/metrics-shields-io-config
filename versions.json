@@ -8,7 +8,7 @@
     "repository": "nginx/nginx"
   },
   "prometheus": {
-    "version": "2.20.1",
+    "version": "2.21.0",
     "repository": "prometheus/prometheus"
   },
   "telegraf": {
