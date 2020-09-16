@@ -6,7 +6,7 @@ metrics_grafana_version: 7.1.5
 # https://github.com/renovatebot/renovate/issues/7297#issuecomment-693229032
 # A workaround is to use docker source+versioning
 # renovate: datasource=docker depName=nginx versioning=docker
-metrics_nginx_version: 1.17.10
+metrics_nginx_version: 1.19.2
 # renovate: datasource=github-releases depName=prometheus/prometheus
 metrics_prometheus_version: 2.21.0
 # renovate: datasource=github-releases depName=influxdata/telegraf
