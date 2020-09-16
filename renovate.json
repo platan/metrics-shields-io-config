@@ -7,9 +7,9 @@
     {
       "fileMatch": ["^versions\\.yml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n.*?: (?<currentValue>.*)"
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\n.*?: (?<currentValue>.*)"
       ],
-      "versioningTemplate": "node"
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}node{{/if}}"
     }
   ]
 }
