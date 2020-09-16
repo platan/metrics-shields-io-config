@@ -1,7 +1,7 @@
 ---
 # renovate: datasource=github-releases depName=grafana/grafana
 metrics_grafana_version: 7.1.5
-# Removate is not able to work properly with tag format from
+# Renovate is not able to work properly with tag format from
 # https://github.com/nginx/nginx/tags
 # https://github.com/renovatebot/renovate/issues/7297#issuecomment-693229032
 # A workaround is to use docker source+versioning
