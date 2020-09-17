@@ -11,5 +11,11 @@
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}node{{/if}}"
     }
+  ],
+  "packageRules": [
+    {
+      "packageNames": ["nginx/nginx"],
+      "extractVersion": "^release-(?<version>.*)$"
+    }
   ]
 }
