@@ -28,4 +28,4 @@ if [[ -z "$EXTRAS_FILE" ]]; then
 fi
 
 
-ansible-playbook shields-io-metrics.yml -i "$INVENTORY_FILE" -e @versions.json -e "$EXTRAS_FILE" --ask-vault-pass --ask-become-pass "$@"
+ansible-playbook shields-io-metrics.yml -i "$INVENTORY_FILE" -e @versions.yml -e "$EXTRAS_FILE" --ask-vault-pass --ask-become-pass "$@"
