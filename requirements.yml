@@ -9,4 +9,4 @@
 - name: cloudalchemy.blackbox-exporter
   version: 0.9.2
 - name: dj-wasabi.telegraf
-  version: 0.12.0
+  version: 0.13.0
