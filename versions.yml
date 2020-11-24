@@ -2,7 +2,7 @@
 # renovate: datasource=github-releases depName=grafana/grafana
 metrics_grafana_version: 7.2.2
 # renovate: datasource=github-tags depName=nginx/nginx
-metrics_nginx_version: 1.17.10
+metrics_nginx_version: 1.19.5
 # renovate: datasource=github-releases depName=prometheus/prometheus
 metrics_prometheus_version: 2.22.0
 # renovate: datasource=github-releases depName=influxdata/telegraf
