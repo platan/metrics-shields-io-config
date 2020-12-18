@@ -17,5 +17,6 @@
       "packageNames": ["nginx/nginx"],
       "extractVersion": "^release-(?<version>.*)$"
     }
-  ]
+  ],
+  "prHourlyLimit": 10
 }
