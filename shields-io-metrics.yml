@@ -54,17 +54,6 @@
       static_configs:
       - targets: ['localhost:9100']
       scrape_interval: 60s
-    - job_name: 'shields-io-production'
-      scheme: https
-      scrape_timeout: 13s
-      static_configs:
-        - targets: ['s0.shields-server.com', 's1.shields-server.com', 's2.shields-server.com']
-          labels:
-            application: shields
-            service: shields
-            env: shields-io-production
-      tls_config:
-        insecure_skip_verify: true
     - job_name: 'blackbox'
       metrics_path: /probe
       params:
