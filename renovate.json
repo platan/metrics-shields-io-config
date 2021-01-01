@@ -14,8 +14,9 @@
   ],
   "packageRules": [
     {
-      "packageNames": ["nginx/nginx"],
-      "extractVersion": "^release-(?<version>.*)$"
+      "packagePatterns": [".*"],
+      "managers": ["regex"],
+      "extractVersion": "^(v|release-)?(?<version>.*)$"
     }
   ],
   "prHourlyLimit": 10
