@@ -2,7 +2,7 @@
 - name: Setup Node exporter
   hosts: metrics
   roles:
-    - cloudalchemy.node-exporter
+    - cloudalchemy.node_exporter
   vars:
     node_exporter_web_listen_address: 127.0.0.1:9100
   tags:
