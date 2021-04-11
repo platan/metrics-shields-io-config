@@ -5,7 +5,7 @@
 - name: cloudalchemy.grafana
   version: 0.18.0
 - name: cloudalchemy.node_exporter
-  version: 0.22.0
+  version: 1.0.0
 - name: cloudalchemy.blackbox-exporter
   version: 0.9.3
 - name: dj-wasabi.telegraf
