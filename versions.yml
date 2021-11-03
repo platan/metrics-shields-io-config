@@ -4,6 +4,6 @@ metrics_grafana_version: 8.0.1
 # renovate: datasource=github-tags depName=nginx/nginx
 metrics_nginx_version: 1.17.10
 # renovate: datasource=github-releases depName=prometheus/prometheus
-metrics_prometheus_version: 2.30.3
+metrics_prometheus_version: 2.31.0
 # renovate: datasource=github-releases depName=influxdata/telegraf
 metrics_telegraf_version: 1.19.0
