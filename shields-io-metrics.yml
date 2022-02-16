@@ -157,8 +157,47 @@
     # 1.18.0 is not available in nginx repository: https://nginx.org/en/linux_packages.html#Ubuntu
     # the next available version after 1.17.x is 1.19.x
     nginx_version: "={{ metrics_nginx_version }}-1~bionic"
-    nginx_http_template_enable: true
-    nginx_http_template:
+  tags:
+    - nginx
+  tasks:
+  - name: Install package required by htpasswd
+    apt:
+      name: python3-passlib
+    tags:
+      - nginx-htpasswd
+  - name: Create a password file for prometheus
+    htpasswd:
+      path: /etc/nginx/.htpasswd.{{ metrics_domain }}-prometheus
+      name: prometheus
+      password: '{{ mertics_prometheus_password }}'
+      owner: nginx
+      group: root
+      mode: 0640
+    tags:
+      - nginx-htpasswd
+  - name: Create a password file for telegraf
+    htpasswd:
+      path: /etc/nginx/.htpasswd.{{ metrics_domain }}-telegraf
+      name: '{{ item.name }}'
+      password: '{{ item.password }}'
+      owner: nginx
+      group: root
+      mode: 0640
+    with_items:
+      - { name: 'telegraf', password: '{{ mertics_telegraf_password }}' }
+      - { name: 'telegraf-staging', password: '{{ mertics_telegraf_staging_password }}' }
+      - { name: 'telegraf-production', password: '{{ mertics_telegraf_production_password }}' }
+    tags:
+      - nginx-htpasswd
+- name: Configure nginx
+  hosts: metrics
+  become: true
+  roles:
+    - role: nginxinc.nginx_config
+      tags: [nginx-role]
+  vars:
+    nginx_config_http_template_enable: true
+    nginx_config_http_template:
      default:
         template_file: http/default.conf.j2
         conf_file_name: default.conf
@@ -235,36 +274,6 @@
                   auth_basic_user_file: /etc/nginx/.htpasswd.{{ metrics_domain }}-telegraf
   tags:
     - nginx
-  tasks:
-  - name: Install package required by htpasswd
-    apt:
-      name: python3-passlib
-    tags:
-      - nginx-htpasswd
-  - name: Create a password file for prometheus
-    htpasswd:
-      path: /etc/nginx/.htpasswd.{{ metrics_domain }}-prometheus
-      name: prometheus
-      password: '{{ mertics_prometheus_password }}'
-      owner: nginx
-      group: root
-      mode: 0640
-    tags:
-      - nginx-htpasswd
-  - name: Create a password file for telegraf
-    htpasswd:
-      path: /etc/nginx/.htpasswd.{{ metrics_domain }}-telegraf
-      name: '{{ item.name }}'
-      password: '{{ item.password }}'
-      owner: nginx
-      group: root
-      mode: 0640
-    with_items:
-      - { name: 'telegraf', password: '{{ mertics_telegraf_password }}' }
-      - { name: 'telegraf-staging', password: '{{ mertics_telegraf_staging_password }}' }
-      - { name: 'telegraf-production', password: '{{ mertics_telegraf_production_password }}' }
-    tags:
-      - nginx-htpasswd
 - name: Install Let's Encrypt certificate and enable HTTPS in nginx
   hosts: metrics
   tasks:
