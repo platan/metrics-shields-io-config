@@ -19,5 +19,6 @@
       "extractVersion": "^(v|release-)?(?<version>.*)$"
     }
   ],
-  "prHourlyLimit": 20
+  "prHourlyLimit": 20,
+  "prConcurrentLimit": 20
 }
