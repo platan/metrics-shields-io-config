@@ -156,7 +156,7 @@
   vars:
     # 1.18.0 is not available in nginx repository: https://nginx.org/en/linux_packages.html#Ubuntu
     # the next available version after 1.17.x is 1.19.x
-    nginx_version: "={{ metrics_nginx_version }}-1~bionic"
+    nginx_version: "={{ metrics_nginx_version }}-1~jammy"
   tags:
     - nginx
   tasks:
