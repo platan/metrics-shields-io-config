@@ -6,4 +6,4 @@ metrics_nginx_version: 1.23.1
 # renovate: datasource=github-releases depName=prometheus/prometheus
 metrics_prometheus_version: 2.41.0
 # renovate: datasource=github-releases depName=influxdata/telegraf
-metrics_telegraf_version: 1.25.0
+metrics_telegraf_version: 1.25.1
