@@ -23,4 +23,4 @@ collections:
   - name: ansible.windows
     version: 1.9.0
   - name: amazon.aws
-    version: 3.1.1
+    version: 5.4.0
