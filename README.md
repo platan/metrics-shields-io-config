@@ -125,6 +125,7 @@ Vagrant can be used to test the configuration or run monitoring locally ([docume
 ```bash
 # go to repo directory
 cd repo-dir
+# or `OBJC_DISABLE_INITIALIZE_FORK_SAFETY=true vagrant up` if you have get `objc[7750]: +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called.`
 vagrant up
 ```
 
