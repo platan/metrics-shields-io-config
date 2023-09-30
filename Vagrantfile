@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
     inline: "sudo apt-get update"
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
+    ansible.compatibility_mode = "2.0"
     ansible.playbook = "shields-io-metrics.yml"
     # extra_vars accepts one file only, using raw_arguments to pass two files
     # "-e=@variables-local.yml" works, but "-e @variables-local.yml" does not work
