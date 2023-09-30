@@ -1,7 +1,7 @@
 ---
 roles:
   - name: cloudalchemy.prometheus
-    version: 2.16.2
+    version: 2.17.0
   - name: nginxinc.nginx
     version: 0.23.0
   - name: nginxinc.nginx_config
