@@ -159,6 +159,7 @@
     nginx_version: "={{ metrics_nginx_version }}-1~bionic"
   tags:
     - nginx
+    - nginx_install
   tasks:
   - name: Install package required by htpasswd
     apt:
