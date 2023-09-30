@@ -5,7 +5,7 @@ roles:
   - name: nginxinc.nginx
     version: 0.23.0
   - name: nginxinc.nginx_config
-    version: 0.3.3
+    version: 0.7.0
   - name: cloudalchemy.grafana
     version: 0.18.0
   - name: cloudalchemy.node_exporter
