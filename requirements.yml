@@ -19,7 +19,7 @@ collections:
   - name: community.general
     version: 4.4.0
   - name: community.grafana
-    version: 1.5.3
+    version: 1.5.4
   - name: ansible.windows
     version: 1.9.0
   - name: amazon.aws
