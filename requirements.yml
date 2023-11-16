@@ -11,7 +11,7 @@ roles:
   - name: cloudalchemy.node_exporter
     version: 0.22.0
   - name: cloudalchemy.blackbox-exporter
-    version: 0.9.3
+    version: 1.0.0
   - name: dj-wasabi.telegraf
     version: 0.14.0
 
