@@ -27,7 +27,7 @@
   hosts: metrics
   become: true
   tags:
-    - prometheus-community-collection
+    - prometheus
   roles:
     - prometheus.prometheus.prometheus
   vars:
@@ -77,59 +77,6 @@
               target_label: instance
             - target_label: __address__
               replacement: 127.0.0.1:9115
-- name: Setup prometheus
-  hosts: metrics
-  roles:
-    - cloudalchemy.prometheus
-  vars:
-    prometheus_version: "{{ metrics_prometheus_version }}"
-    # override extra labels added by cloudalchemy.prometheus role
-    prometheus_external_labels: {}
-    prometheus_web_external_url: "http://{{ metrics_domain }}/prometheus/"
-    prometheus_web_listen_address: 127.0.0.1:9090
-    prometheus_config_flags_extra:
-      web.route-prefix: /
-    prometheus_global:
-      scrape_interval: 15s
-    prometheus_scrape_configs:
-    - job_name: 'telegraf'
-      honor_labels: true
-      static_configs:
-      - targets: ['localhost:9273']
-      metric_relabel_configs:
-      - source_labels: [service]
-        target_label: exported_service
-      - action: labeldrop
-        regex: service
-    - job_name: 'prometheus'
-      static_configs:
-      - targets: ['localhost:9090']
-    - job_name: 'node'
-      static_configs:
-      - targets: ['localhost:9100']
-      scrape_interval: 60s
-    - job_name: 'blackbox'
-      metrics_path: /probe
-      params:
-        module: [http_2xx]
-      static_configs:
-        - targets:
-          - https://raster.shields.io/badge/foo-bar-blue.png
-          - https://shields.io/
-          - https://img.shields.io/badge/foo-bar-blue
-          - https://img.shields.io/npm/v/gh-badges
-          - https://img.shields.io/travis/rust-lang/rust
-          - https://img.shields.io/npm/dt/gh-badges
-          - https://img.shields.io/github/stars/badges/shields
-      relabel_configs:
-        - source_labels: [__address__]
-          target_label: __param_target
-        - source_labels: [__param_target]
-          target_label: instance
-        - target_label: __address__
-          replacement: 127.0.0.1:9115
-  tags:
-    - prometheus
 - name: Setup grafana
   hosts: metrics
   roles:
