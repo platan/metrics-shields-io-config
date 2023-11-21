@@ -11,7 +11,7 @@
 - name: Setup Blackbox exporter
   hosts: metrics
   roles:
-    - cloudalchemy.blackbox-exporter
+    - prometheus.prometheus.blackbox_exporter
   vars:
     blackbox_exporter_web_listen_address: 127.0.0.1:9115
     blackbox_exporter_configuration_modules:
