@@ -77,6 +77,59 @@
               target_label: instance
             - target_label: __address__
               replacement: 127.0.0.1:9115
+- name: Setup Grafana (without deprecated roles)
+  hosts: metrics
+  tags:
+    - grafana2
+  tasks:
+    - name: Install Grafana using deb package
+      ansible.builtin.apt:
+        # TODO check checksum
+        deb: https://dl.grafana.com/oss/release/grafana_{{ metrics_grafana_version }}_amd64.deb
+    - name: Enable and start service grafana-server
+      become: yes
+      ansible.builtin.service:
+        name: grafana-server
+        enabled: yes
+        state: started
+    - name: Copy config
+      become: true
+      ansible.builtin.template:
+        src: grafana/grafana.ini
+        dest: /etc/grafana/grafana.ini
+    - name: Copy datasources provisioning
+      become: true
+      ansible.builtin.copy:
+        src: grafana/provisioning/datasources/prometheus.yml
+        dest: /etc/grafana/provisioning/datasources/prometheus.yaml
+    - name: Copy dashboards provisioning
+      become: true
+      ansible.builtin.copy:
+        src: grafana/provisioning/dashboards/from-file.yml
+        dest: /etc/grafana/provisioning/dashboards/
+    - name: Copy dashboards
+      become: true
+      ansible.builtin.copy:
+        src: grafana/dashboards/
+        dest: /etc/grafana/dashboards/
+    - name: Download "Node Exporter Full" dashboard
+      become: true
+      ansible.builtin.get_url:
+        url: https://grafana.com/api/dashboards/1860/revisions/33/download
+        dest: /etc/grafana/dashboards/node-exporter-full-id-1860-revision-33.json
+    # - name: Download "Prometheus Blackbox Exporter" dashboard
+    #   become: true
+    #   ansible.builtin.get_url:
+    #     url: https://grafana.com/api/dashboards/7587/revisions/3/download
+    #     dest: /etc/grafana/dashboards/prometheus-blackbox-exporter-id-7587-revision-3.json
+    - name: Install plugin
+      become: true
+      ansible.builtin.command: /usr/share/grafana/bin/grafana cli plugins install grafana-piechart-panel
+    - name: Restart service grafana-server
+      become: true
+      ansible.builtin.service:
+        name: grafana-server
+        state: restarted
 - name: Setup grafana
   hosts: metrics
   roles:

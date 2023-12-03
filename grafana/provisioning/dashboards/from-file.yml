@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: 'from file'
+    orgId: 1
+    type: file
+    disableDeletion: true
+    updateIntervalSeconds: 600
+    allowUiUpdates: false
+    options:
+      path: /etc/grafana/dashboards/
+      foldersFromFilesStructure: false
