@@ -17,6 +17,6 @@ collections:
   - name: ansible.windows
     version: 2.1.0
   - name: amazon.aws
-    version: 6.4.0
+    version: 7.2.0
   - name: prometheus.prometheus
     version: 0.8.1
