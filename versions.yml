@@ -1,6 +1,6 @@
 ---
 # renovate: datasource=github-releases depName=grafana/grafana
-metrics_grafana_version: 10.2.2
+metrics_grafana_version: 10.3.1
 # renovate: datasource=github-tags depName=nginx/nginx
 metrics_nginx_version: 1.25.3
 # renovate: datasource=github-releases depName=prometheus/prometheus
