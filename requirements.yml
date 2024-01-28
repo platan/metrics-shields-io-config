@@ -11,12 +11,12 @@ roles:
 
 collections:
   - name: community.general
-    version: 7.4.0
+    version: 8.2.0
   - name: community.grafana
-    version: 1.5.4
+    version: 1.7.0
   - name: ansible.windows
     version: 2.1.0
   - name: amazon.aws
-    version: 6.4.0
+    version: 7.2.0
   - name: prometheus.prometheus
-    version: 0.8.1
+    version: 0.11.2
