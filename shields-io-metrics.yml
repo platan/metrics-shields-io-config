@@ -81,7 +81,24 @@
   hosts: metrics
   tags:
     - grafana2
+  become: true
   tasks:
+    - name: One way to avoid apt_key once it is removed from your distro, armored keys should use .asc extension, binary should use .gpg
+      block:
+        - name: create /etc/apt/keyrings directory
+          ansible.builtin.file:
+            path: /etc/apt/keyrings
+            state: directory
+            mode: '0755'
+        - name: add key
+          ansible.builtin.apt_key:
+            id: B53AE77BADB630A683046005963FA27710458545
+            url: https://apt.grafana.com/gpg.key
+            keyring: /etc/apt/keyrings/grafana.gpg
+        - name: add repository
+          ansible.builtin.apt_repository:
+            repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
+            state: present
     - name: Install Grafana using deb package
       ansible.builtin.apt:
         # TODO check checksum
@@ -102,6 +119,7 @@
       ansible.builtin.copy:
         src: grafana/provisioning/datasources/prometheus.yml
         dest: /etc/grafana/provisioning/datasources/prometheus.yaml
+        # TODO add dashboard 7587
     - name: Copy dashboards provisioning
       become: true
       ansible.builtin.copy:
