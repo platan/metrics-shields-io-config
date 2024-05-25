@@ -7,7 +7,7 @@ roles:
   - name: cloudalchemy.grafana
     version: 0.18.0
   - name: dj-wasabi.telegraf
-    version: 0.14.0
+    version: 0.14.1
 
 collections:
   - name: community.general
