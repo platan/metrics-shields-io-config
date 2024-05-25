@@ -7,7 +7,7 @@ roles:
   - name: cloudalchemy.grafana
     version: 0.18.0
   - name: dj-wasabi.telegraf
-    version: 0.14.0
+    version: 0.14.1
 
 collections:
   - name: community.general
@@ -19,4 +19,4 @@ collections:
   - name: amazon.aws
     version: 7.2.0
   - name: prometheus.prometheus
-    version: 0.11.2
+    version: 0.16.3
