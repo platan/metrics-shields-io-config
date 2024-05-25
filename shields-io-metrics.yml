@@ -83,7 +83,7 @@
     - grafana2
   become: true
   tasks:
-    - name: One way to avoid apt_key once it is removed from your distro, armored keys should use .asc extension, binary should use .gpg
+    - name: Add repository
       block:
         - name: create /etc/apt/keyrings directory
           ansible.builtin.file:
