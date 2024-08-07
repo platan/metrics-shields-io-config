@@ -11,7 +11,7 @@ roles:
 
 collections:
   - name: community.general
-    version: 8.2.0
+    version: 8.6.3
   - name: community.grafana
     version: 1.7.0
   - name: ansible.windows
