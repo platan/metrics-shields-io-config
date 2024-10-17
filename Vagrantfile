@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
     # extra_vars accepts one file only, using raw_arguments to pass two files
     # "-e=@variables-local.yml" works, but "-e @variables-local.yml" does not work
     ansible.raw_arguments = ["-e=@variables-local.yml", "-e=@versions.yml"]
-    ansible.skip_tags = ["certbot-obtain", "certbot-nginx", "grafana"]
+    ansible.skip_tags = ["certbot-obtain", "certbot-nginx"]
     ansible.become = true
     ansible.galaxy_role_file = "requirements.yml"
     ansible.galaxy_roles_path = "roles_for_vagrant"

@@ -80,7 +80,7 @@
 - name: Setup Grafana (without deprecated roles)
   hosts: metrics
   tags:
-    - grafana2
+    - grafana
   become: true
   tasks:
     - name: Add repository
@@ -217,7 +217,7 @@
         name: grafana-server
         state: restarted
   tags:
-    - grafana
+    - grafana_legacy
 - name: Setup nginx
   hosts: metrics
   become: true
