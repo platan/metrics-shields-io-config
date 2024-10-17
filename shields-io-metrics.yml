@@ -101,7 +101,6 @@
             state: present
     - name: Install Grafana using deb package
       ansible.builtin.apt:
-        # TODO check checksum
         deb: https://dl.grafana.com/oss/release/grafana_{{ metrics_grafana_version }}_amd64.deb
     - name: Enable and start service grafana-server
       become: yes
@@ -133,8 +132,8 @@
     - name: Download "Node Exporter Full" dashboard
       become: true
       ansible.builtin.get_url:
-        url: https://grafana.com/api/dashboards/1860/revisions/33/download
-        dest: /etc/grafana/dashboards/node-exporter-full-id-1860-revision-33.json
+        url: https://grafana.com/api/dashboards/1860/revisions/37/download
+        dest: /etc/grafana/dashboards/node-exporter-full-id-1860-revision-37.json
     # - name: Download "Prometheus Blackbox Exporter" dashboard
     #   become: true
     #   ansible.builtin.get_url:
