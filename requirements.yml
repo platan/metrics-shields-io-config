@@ -4,8 +4,6 @@ roles:
     version: 0.24.3
   - name: nginxinc.nginx_config
     version: 0.3.3
-  - name: cloudalchemy.grafana
-    version: 0.18.0
   - name: dj-wasabi.telegraf
     version: 0.14.1
 
