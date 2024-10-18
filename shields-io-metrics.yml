@@ -99,9 +99,10 @@
           ansible.builtin.apt_repository:
             repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
             state: present
-    - name: Install Grafana using deb package
+    - name: Install Grafana
       ansible.builtin.apt:
-        deb: https://dl.grafana.com/oss/release/grafana_{{ metrics_grafana_version }}_amd64.deb
+        name: grafana={{ metrics_grafana_version }}
+        update_cache: yes
     - name: Enable and start service grafana-server
       become: yes
       ansible.builtin.service:
