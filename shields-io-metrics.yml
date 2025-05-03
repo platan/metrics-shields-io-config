@@ -142,7 +142,7 @@
     #     dest: /etc/grafana/dashboards/prometheus-blackbox-exporter-id-7587-revision-3.json
     - name: Install plugin
       become: true
-      ansible.builtin.command: /usr/share/grafana/bin/grafana cli plugins install grafana-piechart-panel
+      ansible.builtin.command: /usr/share/grafana/bin/grafana cli --homepath "/usr/share/grafana" plugins install grafana-piechart-panel
     - name: Restart service grafana-server
       become: true
       ansible.builtin.service:
