@@ -9,7 +9,7 @@ roles:
 
 collections:
   - name: community.general
-    version: 8.2.0
+    version: 10.7.0
   - name: community.grafana
     version: 2.1.0
   - name: ansible.windows
