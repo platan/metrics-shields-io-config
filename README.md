@@ -48,7 +48,7 @@ ansible-vault encrypt_string --ask-vault-pass --stdin-name 'my_key'
 ```
 6. Run a playbook:
 ```bash
-ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml --ask-vault-pass --ask-become-pass
+./deploy.sh
 ```
 
 ### Component versions
@@ -75,15 +75,15 @@ Ansible roles
 
 #### Grafana
 - update `metrics_grafana_version` in `versions.yml` file
-- run the playbook with `grafana` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.yml --ask-vault-pass --ask-become-pass --tags grafana`
+- run the playbook with `grafana` tags: `./deploy.sh --tags grafana`
 
 #### Prometheus
 - update `metrics_prometheus_version` in `versions.yml` file
-- run the playbook with `prometheus` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.yml --ask-vault-pass --ask-become-pass --tags prometheus`
+- run the playbook with `prometheus` tags: `./deploy.sh --tags prometheus`
 
 #### Nginx
 - update `metrics_nginx_version` in `versions.yml` file
-- run the playbook with `nginx,certbot-nginx` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.yml --ask-vault-pass --ask-become-pass --tags nginx,certbot-nginx`
+- run the playbook with `nginx,certbot-nginx` tags: `./deploy.sh --tags nginx,certbot-nginx`
 
 #### Node exporter, Blackbox exporter
 These components do not have a fixed version in `versions.yml` file or in `shields-io-metrics.yml` file. The playbook is using the default version value defined in corresponding Ansible roles. Usually, the new versions of Ansible role for these components are released shortly after releasing components. To update the component simply update the Ansible role (instructions below).
@@ -91,7 +91,7 @@ These components do not have a fixed version in `versions.yml` file or in `shiel
 #### Telegraf
 :warning: apt repository containing Telegraf contains only the latest version (https://github.com/dj-wasabi/ansible-telegraf/issues/95#issuecomment-480397359, https://github.com/influxdata/telegraf/issues/5685)
 - update `metrics_telegraf_version` in `versions.yml` file
-- run the playbook with `telegraf` tags: `ansible-playbook shields-io-metrics.yml -i inventory.ini -e @variables.yml -e @versions.yml --ask-vault-pass --ask-become-pass --tags telegraf`
+- run the playbook with `telegraf` tags: `./deploy.sh --tags telegraf`
 
 #### Any Ansible role
 - update version in `requirements.yml`
