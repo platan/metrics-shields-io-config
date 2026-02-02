@@ -3,7 +3,7 @@ roles:
   - name: nginxinc.nginx
     version: 0.24.3
   - name: nginxinc.nginx_config
-    version: 0.3.3
+    version: 0.7.1
   - name: dj-wasabi.telegraf
     version: 0.14.1
 
